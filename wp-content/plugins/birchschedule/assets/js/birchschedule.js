@@ -20,7 +20,6 @@ jQuery(function($){
     
     function changeServiceOptions() {
         var clientTypeId = $('#birs_appointment_client_type').val();
-        alert(clientTypeId);
         $('#birs_appointment_service_div').html('');
         var postData = $('#birs_appointment_form').serialize();
         postData += '&' + $.param({
@@ -141,6 +140,17 @@ jQuery(function($){
     });
     $('#birs_appointment_client_type').select2({
         width: '50%'
+        ajax:{
+        	url:ajaxUrl,
+        	dataType:'jsonp',
+        	data:function(){
+                var clientTypeId = $('#birs_appointment_client_type').val();
+        		return {cid:clientTypeId, action:'birs_get_avaliable_time'};
+        	},
+        	results:funciton(data, page){
+        		alert(data);
+        	}
+        }
     });
     $('#birs_appointment_staff').select2({
         width: '50%'
@@ -150,7 +160,6 @@ jQuery(function($){
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_client_type a').on('change', function(){
-    	alert('111111');
         changeServiceOptions();
         refreshDatetime();
     });
