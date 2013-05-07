@@ -90,7 +90,7 @@ div#submitdiv #minor-publishing{
 }
 
 /* services view */
-.birchschedule #birs_service_length, 
+.birchschedule #birs_service_length_1, #birs_service_length_0, #birs_service_length_2 
 .birchschedule #birs_service_padding,
 .birchschedule #birs_service_price {
     width: 20%;
@@ -99,6 +99,12 @@ div#submitdiv #minor-publishing{
 div#birchschedule-staff-services input,
 div#birchschedule-service-staff input{
     margin-right: 4px;
+}
+
+div#birchschedule .client_type{
+	width:auto;
+	margin:0px;
+	padding-right:4px;
 }
 
 /* calendar view */
