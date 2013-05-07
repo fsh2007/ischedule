@@ -87,8 +87,12 @@ class BIRS_Services_View extends BIRS_Content_View {
     }
 
     function process_content($post_id, $post) {
-        $this->save_field_int($post_id, 'birs_service_length');
-        $this->save_field_string($post_id, 'birs_service_length_type');
+        $this->save_field_int($post_id, 'birs_service_length_0');
+        $this->save_field_string($post_id, 'birs_service_length_type_0');
+        $this->save_field_int($post_id, 'birs_service_length_1');
+        $this->save_field_string($post_id, 'birs_service_length_type_1');
+        $this->save_field_int($post_id, 'birs_service_length_2');
+        $this->save_field_string($post_id, 'birs_service_length_type_2');
         $this->save_field_int($post_id, 'birs_service_padding');
         $this->save_field_string($post_id, 'birs_service_padding_type');
         $this->save_field_int($post_id, 'birs_service_price');
@@ -114,8 +118,12 @@ class BIRS_Services_View extends BIRS_Content_View {
 
     function render_service_info($post) {
         $post_id = $post->ID;
-        $length = get_post_meta($post_id, '_birs_service_length', true);
-        $length_type = get_post_meta($post_id, '_birs_service_length_type', true);
+        $length = get_post_meta($post_id, '_birs_service_length_0', true);
+        $length_type = get_post_meta($post_id, '_birs_service_length_type_0', true);
+        $length = get_post_meta($post_id, '_birs_service_length_1', true);
+        $length_type = get_post_meta($post_id, '_birs_service_length_type_1', true);
+        $length = get_post_meta($post_id, '_birs_service_length_2', true);
+        $length_type = get_post_meta($post_id, '_birs_service_length_type_2', true);
         $padding = get_post_meta($post_id, '_birs_service_padding', true);
         $padding_type = get_post_meta($post_id, '_birs_service_padding_type', true);
         $price = get_post_meta($post_id, '_birs_service_price', true);
