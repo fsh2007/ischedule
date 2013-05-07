@@ -556,8 +556,8 @@ class BIRS_Util {
     }
     
     function get_client_type_options(){
-    	return array('0' => __('Male', 'birchschedule'),
-    			    '1' => __('Female', 'birchschedule'),
+    	return array('0' => __('Female', 'birchschedule'),
+    			    '1' => __('Male', 'birchschedule'),
     			    '2' => __('Child', 'birchschedule'));
     }
     
