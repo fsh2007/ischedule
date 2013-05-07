@@ -90,7 +90,7 @@ div#submitdiv #minor-publishing{
 }
 
 /* services view */
-.birchschedule #birs_service_length_1, #birs_service_length_0, #birs_service_length_2 
+.birchschedule #birs_service_length_1, #birs_service_length_0, #birs_service_length_2,
 .birchschedule #birs_service_padding,
 .birchschedule #birs_service_price {
     width: 20%;
