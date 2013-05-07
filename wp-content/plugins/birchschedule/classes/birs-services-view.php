@@ -135,19 +135,16 @@ class BIRS_Services_View extends BIRS_Content_View {
                     <th><label><?php _e('Length', 'birchschedule'); ?> </label>
                     </th>
                     <td>
-                    <input type="checkbox" name="birs_service_client_type[]" value="0" class="client_type"><?php _e('Male', 'birchschedule'); ?>
                     <input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length_0; ?>"> 
                     <select name="birs_service_length_type_0">
                     <?php $this->render_select_options($this->length_types, $length_type_0); ?>
                     </select>
                     <br/>
-                    <input type="checkbox" name="birs_service_client_type[]" value="1" class="client_type"><?php _e('Female', 'birchschedule'); ?>
                     <input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length_1; ?>"> 
                     <select name="birs_service_length_type_1">
                     <?php $this->render_select_options($this->length_types, $length_type_1); ?>
                     </select>
                     <br/>
-                    <input type="checkbox" name="birs_service_client_type[]" value="2" class="client_type"><?php _e('Child', 'birchschedule'); ?>
                     <input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length_2; ?>"> 
                     <select name="birs_service_length_type_2">
                     <?php $this->render_select_options($this->length_types, $length_type_2); ?>
