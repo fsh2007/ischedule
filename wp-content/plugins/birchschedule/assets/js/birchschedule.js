@@ -147,7 +147,7 @@ jQuery(function($){
                 var clientTypeId = $('#birs_appointment_client_type').val();
         		return {cid:clientTypeId, action:'birs_get_avaliable_time'};
         	},
-        	results:funciton(data, page){
+        	results:function(data, page){
         		alert(data);
         	}
         }
