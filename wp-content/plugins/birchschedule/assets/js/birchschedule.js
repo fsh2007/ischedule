@@ -132,7 +132,7 @@ jQuery(function($){
         $('#birs_appointment_date').val('');
     }
 
-    $('#birs_appointment_service_div').html('');
+    $('#birs_appointment_service_div').html('Choose the Client Type at first!');
     
     //start execute functions
     $('#birs_appointment_location').select2({
@@ -140,17 +140,6 @@ jQuery(function($){
     });
     $('#birs_appointment_client_type').select2({
         width: '50%',
-        ajax:{
-        	url:ajaxUrl,
-        	dataType:'jsonp',
-        	data:function(){
-                var clientTypeId = $('#birs_appointment_client_type').val();
-        		return {cid:clientTypeId, action:'birs_get_avaliable_time'};
-        	},
-        	results:function(data, page){
-        		alert(data);
-        	}
-        }
     });
     $('#birs_appointment_staff').select2({
         width: '50%'
