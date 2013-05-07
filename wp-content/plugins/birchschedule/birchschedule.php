@@ -76,7 +76,7 @@ if (!class_exists('Birchschedule')) :
 
         function register_common_scripts() {
             $version = $this->version;
-            wp_register_script('underscore', $this->plugin_url() . '/assets/js/underscore/underscore-min.js', array(), '1.4.2');
+            wp_register_script('underscore', $this->plugin_url() . '/assets/js/underscore/underscore-min.js', array(), '1.4.4');
             wp_register_script('moment', $this->plugin_url() . '/assets/js/moment/moment.min.js', array(), '1.7.0');
             wp_register_script('select2', $this->plugin_url() . '/assets/js/select2/select2.min.js', array('jquery'), '3.2');
             wp_register_script('jgrowl', $this->plugin_url() . '/assets/js/jgrowl/jquery.jgrowl.js', array('jquery'), '1.2.5');
