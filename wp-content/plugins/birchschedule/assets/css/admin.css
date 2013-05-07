@@ -105,6 +105,11 @@ div#birchschedule-service-staff input{
 	width:auto;
 	margin:0px;
 	padding-right:4px;
+	vertical-align:middle;
+}
+
+.birchschedule .client_type span{
+	width:100px;
 }
 
 /* calendar view */
