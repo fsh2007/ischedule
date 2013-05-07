@@ -118,12 +118,12 @@ class BIRS_Services_View extends BIRS_Content_View {
 
     function render_service_info($post) {
         $post_id = $post->ID;
-        $length = get_post_meta($post_id, '_birs_service_length_0', true);
-        $length_type = get_post_meta($post_id, '_birs_service_length_type_0', true);
-        $length = get_post_meta($post_id, '_birs_service_length_1', true);
-        $length_type = get_post_meta($post_id, '_birs_service_length_type_1', true);
-        $length = get_post_meta($post_id, '_birs_service_length_2', true);
-        $length_type = get_post_meta($post_id, '_birs_service_length_type_2', true);
+        $length_0 = get_post_meta($post_id, '_birs_service_length_0', true);
+        $length_type_0 = get_post_meta($post_id, '_birs_service_length_type_0', true);
+        $length_1 = get_post_meta($post_id, '_birs_service_length_1', true);
+        $length_type_1 = get_post_meta($post_id, '_birs_service_length_type_1', true);
+        $length_2 = get_post_meta($post_id, '_birs_service_length_2', true);
+        $length_type_2 = get_post_meta($post_id, '_birs_service_length_type_2', true);
         $padding = get_post_meta($post_id, '_birs_service_padding', true);
         $padding_type = get_post_meta($post_id, '_birs_service_padding_type', true);
         $price = get_post_meta($post_id, '_birs_service_price', true);
@@ -136,21 +136,21 @@ class BIRS_Services_View extends BIRS_Content_View {
                     </th>
                     <td>
                     <input type="checkbox" name="birs_service_client_type[]" value="0" class="client_type"><?php _e('Male', 'birchschedule'); ?>
-                    <input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length; ?>"> 
+                    <input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length_0; ?>"> 
                     <select name="birs_service_length_type_0">
-                    <?php $this->render_select_options($this->length_types, $length_type); ?>
+                    <?php $this->render_select_options($this->length_types, $length_type_0); ?>
                     </select>
                     <br/>
                     <input type="checkbox" name="birs_service_client_type[]" value="1" class="client_type"><?php _e('Female', 'birchschedule'); ?>
-                    <input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length; ?>"> 
+                    <input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length_1; ?>"> 
                     <select name="birs_service_length_type_1">
-                    <?php $this->render_select_options($this->length_types, $length_type); ?>
+                    <?php $this->render_select_options($this->length_types, $length_type_1); ?>
                     </select>
                     <br/>
                     <input type="checkbox" name="birs_service_client_type[]" value="2" class="client_type"><?php _e('Child', 'birchschedule'); ?>
-                    <input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length; ?>"> 
+                    <input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length_2; ?>"> 
                     <select name="birs_service_length_type_2">
-                    <?php $this->render_select_options($this->length_types, $length_type); ?>
+                    <?php $this->render_select_options($this->length_types, $length_type_2); ?>
                     </select>
                     
                     </td>
