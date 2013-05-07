@@ -139,7 +139,7 @@ jQuery(function($){
         width: '50%'
     });
     $('#birs_appointment_client_type').select2({
-        width: '50%'
+        width: '50%',
         ajax:{
         	url:ajaxUrl,
         	dataType:'jsonp',
