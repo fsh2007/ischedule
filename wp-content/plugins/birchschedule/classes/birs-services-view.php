@@ -135,17 +135,17 @@ class BIRS_Services_View extends BIRS_Content_View {
                     <th><label><?php _e('Length', 'birchschedule'); ?> </label>
                     </th>
                     <td>
-                    <span class="client_type"><?php _e('Female', 'birchschedule'); ?></span><input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length_0; ?>"> 
+                    <span class="client_type"><?php _e('Female', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length_0; ?>"> 
                     <select name="birs_service_length_type_0">
                     <?php $this->render_select_options($this->length_types, $length_type_0); ?>
                     </select>
                     <br/>
-                    <span class="client_type"><?php _e('Male', 'birchschedule'); ?></span><input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length_1; ?>"> 
+                    <span class="client_type"><?php _e('Male', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length_1; ?>"> 
                     <select name="birs_service_length_type_1">
                     <?php $this->render_select_options($this->length_types, $length_type_1); ?>
                     </select>
                     <br/>
-                    <span class="client_type"><?php _e('Child', 'birchschedule'); ?></span><input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length_2; ?>"> 
+                    <span class="client_type"><?php _e('Child', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length_2; ?>"> 
                     <select name="birs_service_length_type_2">
                     <?php $this->render_select_options($this->length_types, $length_type_2); ?>
                     </select>
