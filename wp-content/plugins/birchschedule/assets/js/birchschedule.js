@@ -120,6 +120,9 @@ jQuery(function($){
     }
     
     //start execute functions
+    $('#birs_appointment_client_type').select2({
+        width: '50%'
+    });
     $('#birs_appointment_location').select2({
         width: '50%'
     });
