@@ -149,7 +149,7 @@ jQuery(function($){
     changeAppointmentPrice();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
-    $('#birs_appointment_client_type').on('change', function(){
+    $('#birs_appointment_client_type a').on('change', function(){
     	alert('111111');
         changeServiceOptions();
         refreshDatetime();
