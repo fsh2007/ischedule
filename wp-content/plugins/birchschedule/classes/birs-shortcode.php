@@ -201,6 +201,7 @@ class BIRS_Shortcode {
                         array(
                             'meta_keys' => array(
                                 '_birs_service_length', '_birs_service_length_type',
+                                '_birs_service_client_type_length',
                                 '_birs_service_price', '_birs_service_price_type'
                             ),
                             'base_keys' => array(
@@ -229,6 +230,19 @@ class BIRS_Shortcode {
             return key($services);
         }
     }
+
+    function render_client_type_options($selection){
+    	$util = $this->get_util();
+    	$options = $util->get_client_type_options();
+    	$util->render_html_options($options, $select, '0');
+    	if ($selection) {
+    		return $selection;
+    	} else {
+    		return key($options);
+    	}
+    }
+    
+    
     
     function validate_booking_time() {
         $avaliable_times = $this->get_avaliable_time();
@@ -312,6 +326,7 @@ class BIRS_Shortcode {
             return $text_map[$price_type];
         }
     }
+    
 
     function get_shortcode_html($attr) {
         do_action('birchschedule_render_shortcode_booking_form');
@@ -347,6 +362,14 @@ class BIRS_Shortcode {
             <div>
                 <select id="birs_appointment_location" name="birs_appointment_location">
                     <?php $location_id = $calendar->render_location_options(); ?>
+                </select>
+            </div>
+        </li>
+        <li class="birs_form_field">
+            <label><?php _e('Client Type', 'birchschedule'); ?></label>
+            <div>
+                <select id="birs_appointment_client_type" name="birs_appointment_location">
+                    <?php $client_type = $this->render_client_type_options(0); ?>
                 </select>
             </div>
         </li>

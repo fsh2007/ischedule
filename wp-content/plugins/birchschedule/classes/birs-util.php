@@ -555,6 +555,12 @@ class BIRS_Util {
             'Dr' => __('Dr', 'birchschedule'));
     }
     
+    function get_client_type_options(){
+    	return array('0' => __('Male', 'birchschedule'),
+    			    '1' => __('Female', 'birchschedule'),
+    			    '2' => __('Child', 'birchschedule'));
+    }
+    
     function get_gmt_offset() {
         return -round($this->get_wp_datetime(time())->getOffset() / 60);
     }
