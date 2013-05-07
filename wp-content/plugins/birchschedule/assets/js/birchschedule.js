@@ -20,6 +20,7 @@ jQuery(function($){
     
     function changeServiceOptions() {
         var clientTypeId = $('#birs_appointment_client_type').val();
+        alert(clientTypeId);
         $('#birs_appointment_service_div').html('');
         var postData = $('#birs_appointment_form').serialize();
         postData += '&' + $.param({
@@ -149,6 +150,7 @@ jQuery(function($){
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_client_type').on('change', function(){
+    	alert('111111');
         changeServiceOptions();
         refreshDatetime();
     });
