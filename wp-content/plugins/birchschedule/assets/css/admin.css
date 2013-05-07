@@ -103,9 +103,8 @@ div#birchschedule-service-staff input{
 
 .birchschedule .client_type{
 	width:auto;
-	margin:0px;
-	padding-right:4px;
-	vertical-align:middle;
+	margin-right:4px;
+	vertical-align:inherit;
 }
 
 .birchschedule .client_type span{
