@@ -31,8 +31,9 @@ jQuery(function($){
         	if(values['service_price_type'] == 'dont-show'){
         		seperator = "";
         	}
+        	
         	htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
-        	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + "mins) " + seperator + values['service_price'];
+        	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
         	htmlStr = htmlStr + "<br/>";
             $('#birs_appointment_service_div').append(htmlStr);
         });

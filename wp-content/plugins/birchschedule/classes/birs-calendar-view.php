@@ -195,6 +195,10 @@ class BIRS_Calendar_View extends BIRS_Admin_View
 
     function get_service_length_map ()
     {
+        global $birchschedule;
+        $services_view = $birchschedule->services_view;
+        $text_map = $services_view->get_price_type_text_map();
+
         $query = new BIRS_Model_Query(array(
                 'post_type' => 'birs_service',
                             'order' => 'ASC',
@@ -219,24 +223,33 @@ class BIRS_Calendar_View extends BIRS_Admin_View
         $services = $query->query();
         $service_map = array();
         foreach ($services as $service) {
+            $price_type = $service['_birs_service_price_type'];
+            if ($price_type == 'fixed') {
+                $price = apply_filters('birchschedule_price', $service['_birs_service_price']);
+            } else if ($price_type == 'dont-show') {
+                $price = '';
+            } else {
+                $price = $text_map[$price_type];
+            }
+            
             $service_map[0][$service['ID']] = array(
                     'service_length' => $service['_birs_service_length_0'],
                     'service_length_type' => $service['_birs_service_length_type_0'],
-                    'service_price' => $service['_birs_service_price'],
+                    'service_price' => $price,
                     'service_price_type' => $service['_birs_service_price_type'],
                     'service_title' => $service['post_title']
             );
             $service_map[1][$service['ID']] = array(
                     'service_length' => $service['_birs_service_length_1'],
                     'service_length_type' => $service['_birs_service_length_type_1'],
-                    'service_price' => $service['_birs_service_price'],
+                    'service_price' => $price,
                     'service_price_type' => $service['_birs_service_price_type'],
                     'service_title' => $service['post_title']
             );
             $service_map[2][$service['ID']] = array(
                     'service_length' => $service['_birs_service_length_2'],
                     'service_length_type' => $service['_birs_service_length_type_2'],
-                    'service_price' => $service['_birs_service_price'],
+                    'service_price' => $price,
                     'service_price_type' => $service['_birs_service_price_type'],
                     'service_title' => $service['post_title']
             );
