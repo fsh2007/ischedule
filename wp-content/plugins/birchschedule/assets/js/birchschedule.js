@@ -12,11 +12,24 @@ jQuery(function($){
     }
     
     function changeStaffOptions() {
-        var serviceId = $('#birs_appointment_service').val();
         var locationId = $('#birs_appointment_location').val();
-        var serviceStaffMap = params.service_staff_map[serviceId];
+    	var clientTypeId = $('#birs_appointment_client_type').val();
+    	var serviceId = 0;
+        var serviceStaffMap = null;
         var locationStaffMap = params.location_staff_map[locationId];
-        birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap);
+        
+        $("input[@name='birs_appointment_service[]']").each(function(e){
+        	if( $(this).attr('checked') ){
+        		serviceId = $(this).val();
+        		serviceStaffMap = params.service_staff_map[serviceId];
+                birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap);
+        	}
+        });
+    }
+
+    function changeAppointmentPrice() {
+        var serviceId = $('#birs_appointment_service').val();
+        $('#birs_appointment_price').val(servicePriceMap[serviceId].price);
     }
     
     function changeServiceOptions() {
@@ -56,10 +69,7 @@ jQuery(function($){
             });
         }, 'html');
     }
-    function changeAppointmentPrice() {
-        var serviceId = $('#birs_appointment_service').val();
-        $('#birs_appointment_price').val(servicePriceMap[serviceId].price);
-    }
+
     function isDayAvaliableByBookingPreferences(date, futureTime, cutOffTime) {
         var serverNow = getServerNow();
         var timeOfServer = serverNow.getTime();
@@ -164,7 +174,7 @@ jQuery(function($){
     });
     $('#birs_appointment_service').on('change', function(){
         changeStaffOptions();
-        changeAppointmentPrice();
+        //changeAppointmentPrice();
         refreshDatetime();
     });
     $('#birs_appointment_location').on('change', function(){
