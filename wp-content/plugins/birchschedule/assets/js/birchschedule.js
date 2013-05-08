@@ -18,7 +18,7 @@ jQuery(function($){
         var serviceStaffMap = null;
         var locationStaffMap = params.location_staff_map[locationId];
         
-        $("input[@name='birs_appointment_service[]']").each(function(e){
+        $("input[name='birs_appointment_service[]']").each(function(e){
         	if( $(this).attr('checked') ){
         		serviceId = $(this).val();
         		serviceStaffMap = params.service_staff_map[serviceId];
