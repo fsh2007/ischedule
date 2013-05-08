@@ -25,8 +25,12 @@ jQuery(function($){
         var services = params.service_map[clientTypeId];
         var htmlStr = "";
         var idv = "birs_appointment_service_";
+        var seperator = "-";
         $.each(services, function(key, values){
         	idv = idv + clientTypeId + "_" + key;
+        	if(values['service_price_type'] == 'dont-show'){
+        		seperator = "";
+        	}
         	htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
         	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + "mins) " + seperator + values['service_price'];
         	htmlStr = htmlStr + "<br/>";
