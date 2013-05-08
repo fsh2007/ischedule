@@ -3,7 +3,7 @@ jQuery(function($){
     var ajaxUrl = params.ajax_url;
     var allSchedule = params.all_schedule;
     var servicePriceMap = params.service_price_map;
-    var serviceLengthMap = params.service_length_map;
+    var serviceMap = params.service_map;
     var serverGmtOffset = params.gmt_offset;
     var allDayoffs = params.all_dayoffs;
     

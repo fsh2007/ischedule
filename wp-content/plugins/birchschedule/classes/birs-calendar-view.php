@@ -241,6 +241,8 @@ class BIRS_Calendar_View extends BIRS_Admin_View
                     'service_title' => $service['post_title']
             );
         }
+        
+        return $service_map;
     }
 
     function get_location_staff_map ()

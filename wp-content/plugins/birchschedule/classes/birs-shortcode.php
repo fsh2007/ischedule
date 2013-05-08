@@ -33,7 +33,7 @@ class BIRS_Shortcode {
             'all_dayoffs' => $this->get_all_dayoffs(),
             'service_price_map' => $calendar->get_service_price_map(),
             'service_staff_map' => $calendar->get_service_staff_map(),
-            'service_length_map' => $calendar->get_service_length_map(),
+            'service_map' => $calendar->get_service_length_map(),
             'location_staff_map' => $calendar->get_location_staff_map(),
             'gmt_offset' =>$this->get_util()->get_gmt_offset(),
             'datepicker_i18n_options' => $this->get_util()->get_datepicker_i18n_params(),
