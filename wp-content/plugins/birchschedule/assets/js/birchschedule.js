@@ -148,8 +148,8 @@ jQuery(function($){
     $('#birs_appointment_staff').select2({
         width: '50%'
     });
-    changeStaffOptions();    
-    changeAppointmentPrice();
+    //changeStaffOptions();    
+    //changeAppointmentPrice();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_client_type').on('change', function(){
