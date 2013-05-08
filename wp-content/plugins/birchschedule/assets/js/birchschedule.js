@@ -3,6 +3,7 @@ jQuery(function($){
     var ajaxUrl = params.ajax_url;
     var allSchedule = params.all_schedule;
     var servicePriceMap = params.service_price_map;
+    var serviceLengthMap = params.service_length_map;
     var serverGmtOffset = params.gmt_offset;
     var allDayoffs = params.all_dayoffs;
     
@@ -21,13 +22,16 @@ jQuery(function($){
     function changeServiceOptions() {
         var clientTypeId = $('#birs_appointment_client_type').val();
         $('#birs_appointment_service_div').html('');
-        var postData = $('#birs_appointment_form').serialize();
-        postData += '&' + $.param({
-            action: 'birs_get_avaliable_services'
+        var services = serviceLengthMap[clientTypeId];
+        var htmlStr = "";
+        var idv = "birs_appointment_service_";
+        $.each(service, function(key, values){
+        	idv = idv + clientTypeId + "_" + key;
+        	htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
+        	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + "mins) " + seperator + values['service_price'];
+        	htmlStr = htmlStr + "<br/>";
+            $('#birs_appointment_service_div').append(htmlStr);
         });
-        $.post(ajaxUrl, postData, function(data, status, xhr){
-            $('#birs_appointment_service_div').html(data);
-        }, 'html');
         
     }
 
@@ -148,7 +152,7 @@ jQuery(function($){
     changeAppointmentPrice();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
-    $('#birs_appointment_client_type a').on('change', function(){
+    $('#birs_appointment_client_type').on('change', function(){
         changeServiceOptions();
         refreshDatetime();
     });

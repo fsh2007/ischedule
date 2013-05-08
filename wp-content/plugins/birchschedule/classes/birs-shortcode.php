@@ -4,7 +4,7 @@ class BIRS_Shortcode {
 
     const SHORTCODE_NAME = 'bp-scheduler-bookingform';
 
-    function __construct() {        
+    function __construct() {
         add_action('init', array(&$this, 'init'));
         add_action('wp_ajax_nopriv_birs_save_appointment_frontend', array(&$this, 'ajax_save_appointment'));
         add_action('wp_ajax_birs_save_appointment_frontend', array(&$this, 'ajax_save_appointment'));
@@ -33,6 +33,7 @@ class BIRS_Shortcode {
             'all_dayoffs' => $this->get_all_dayoffs(),
             'service_price_map' => $calendar->get_service_price_map(),
             'service_staff_map' => $calendar->get_service_staff_map(),
+            'service_length_map' => $calendar->get_service_length_map(),
             'location_staff_map' => $calendar->get_location_staff_map(),
             'gmt_offset' =>$this->get_util()->get_gmt_offset(),
             'datepicker_i18n_options' => $this->get_util()->get_datepicker_i18n_params(),
@@ -221,7 +222,7 @@ class BIRS_Shortcode {
             if ($service['_birs_service_price_type'] == "dont-show") {
                 $seperator = "";
             }
-            echo "<option value='$service->ID' $selected>$service->post_title ($length " . 
+            echo "<option value='$service->ID' $selected>$service->post_title ($length " .
                 __("mins", "birchschedule") . ") $seperator $price</option>";
         };
         if ($selection) {
@@ -381,7 +382,7 @@ class BIRS_Shortcode {
                 </select>
             </div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Service Provider', 'birchschedule'); ?></label>
             <div>
                 <select id="birs_appointment_staff" name="birs_appointment_staff">
@@ -390,7 +391,7 @@ class BIRS_Shortcode {
             </div>
             <div class="birs_error" id="birs_appointment_service_error"></div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Date & Time', 'birchschedule'); ?></label>
             <input id="birs_appointment_date" name="birs_appointment_date" type="hidden">
             <input id="birs_appointment_time" name="birs_appointment_time" type="hidden">
@@ -404,7 +405,7 @@ class BIRS_Shortcode {
             </table>
             <div class="birs_error" id="birs_appointment_datetime_error"></div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Notes', 'birchschedule') ?></label>
             <div>
                 <textarea id="birs_appointment_notes" name="birs_appointment_notes"></textarea>
@@ -414,7 +415,7 @@ class BIRS_Shortcode {
         <li class="birs_form_field">
             <h2 class="birs_section"><?php _e('Your Info', 'birchschedule'); ?></h2>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('First Name', 'birchschedule') ?></label>
             <div>
                 <input id="birs_client_name_first" name="birs_client_name_first" type="text">
@@ -422,7 +423,7 @@ class BIRS_Shortcode {
             </div>
             <div class="birs_error" id="birs_client_name_first_error"></div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Last Name', 'birchschedule') ?></label>
             <div>
                 <input id="birs_client_name_last" name="birs_client_name_last" type="text">
@@ -430,7 +431,7 @@ class BIRS_Shortcode {
             </div>
             <div class="birs_error" id="birs_client_name_last_error"></div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Email', 'birchschedule') ?></label>
             <div>
                 <input id="birs_client_email" name="birs_client_email" type="text">
@@ -438,7 +439,7 @@ class BIRS_Shortcode {
             </div>
             <div class="birs_error" id="birs_client_email_error"></div>
         </li>
-        <li class="birs_form_field"> 
+        <li class="birs_form_field">
             <label><?php _e('Phone', 'birchschedule') ?></label>
             <div>
                 <input id="birs_client_phone" name="birs_client_phone" type="text">
@@ -446,7 +447,7 @@ class BIRS_Shortcode {
             </div>
             <div class="birs_error" id="birs_client_phone_error"></div>
         </li>
-        <li class="birs_footer"> 
+        <li class="birs_footer">
             <div class="birs_error" id="birs_booking_error"></div>
             <div style="display:none;" id="birs_please_wait"><?php _e('Please wait...', 'birchschedule'); ?></div>
             <div>
