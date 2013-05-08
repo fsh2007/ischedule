@@ -49,6 +49,11 @@ jQuery(function($){
         	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
         	htmlStr = htmlStr + "<br/>";
             $('#birs_appointment_service_div').append(htmlStr);
+            
+            $('#' + idv).on('click', function(){
+            	changeStaffOptions();
+            	return true;
+            });
         });
         
     }
