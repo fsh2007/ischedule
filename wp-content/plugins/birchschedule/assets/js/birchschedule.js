@@ -22,7 +22,7 @@ jQuery(function($){
     function changeServiceOptions() {
         var clientTypeId = $('#birs_appointment_client_type').val();
         $('#birs_appointment_service_div').html('');
-        var services = serviceLengthMap[clientTypeId];
+        var services = params.service_length_map[clientTypeId];
         var htmlStr = "";
         var idv = "birs_appointment_service_";
         $.each(service, function(key, values){
