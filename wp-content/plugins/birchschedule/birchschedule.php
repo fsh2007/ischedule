@@ -40,7 +40,7 @@ if (!class_exists('Birchschedule')) :
         public function __construct() {
             $this->version = '1.5.5.2';
             $this->product_version = '1.5.5.2';
-            $this->product_name = 'BirchPress Scheduler';
+            $this->product_name = 'NetWebX iScheduler';
             $this->product_code = 'birchschedule';
             $this->admin_capability = 'publish_pages';
             
@@ -207,12 +207,12 @@ if (!class_exists('Birchschedule')) :
                     $service,
                     $client,
                     $settings,
-                    $help
+                    //$help
                 );
             } else {
                 $sub_items = array(
                     $calendar,
-                    $help
+                    //$help
                 );
             }
         }
