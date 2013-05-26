@@ -22,9 +22,9 @@
  * @var array
  */
 
-//$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
+$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
 
-//$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
+$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
 
 //if ( is_multisite() ) {
 //	$submenu[ 'index.php' ][5] = array( __('My Sites'), 'read', 'my-sites.php' );
@@ -44,7 +44,7 @@
 //	unset( $cap );
 //}
 
-//$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
+$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
 
 
 //$menu[5] = array( __('Posts'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu-top menu-icon-post', 'menu-posts', 'none' );
