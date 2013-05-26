@@ -96,7 +96,7 @@ function wp_dashboard_setup() {
 			'show_date' => 1,
 		);
 	}
-	*/
+	
 	wp_add_dashboard_widget( 'dashboard_primary', $widget_options['dashboard_primary']['title'], 'wp_dashboard_primary', 'wp_dashboard_primary_control' );
 
 	// Secondary Feed (Planet) Widget
@@ -126,7 +126,7 @@ function wp_dashboard_setup() {
 		do_action( 'wp_dashboard_setup' );
 		$dashboard_widgets = apply_filters( 'wp_dashboard_widgets', array() );
 	}
-
+	*/
 	foreach ( $dashboard_widgets as $widget_id ) {
 		$name = empty( $wp_registered_widgets[$widget_id]['all_link'] ) ? $wp_registered_widgets[$widget_id]['name'] : $wp_registered_widgets[$widget_id]['name'] . " <a href='{$wp_registered_widgets[$widget_id]['all_link']}' class='edit-box open-box'>" . __('View all') . '</a>';
 		wp_add_dashboard_widget( $widget_id, $name, $wp_registered_widgets[$widget_id]['callback'], $wp_registered_widget_controls[$widget_id]['callback'] );
