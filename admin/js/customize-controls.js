@@ -553,7 +553,7 @@
 
 				// Check for URLs that include "/wp-admin/" or end in "/wp-admin".
 				// Strip hashes and query strings before testing.
-				if ( /\/wp-admin(\/|$)/.test( to.replace(/[#?].*$/, '') ) )
+				if ( /\/admin(\/|$)/.test( to.replace(/[#?].*$/, '') ) )
 					return null;
 
 				// Attempt to match the URL to the control frame's scheme

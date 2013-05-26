@@ -141,7 +141,7 @@ function wp_update_plugins() {
 
 	// If running blog-side, bail unless we've not checked in the last 12 hours
 	if ( !function_exists( 'get_plugins' ) )
-		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once( ABSPATH . _WP_ADMIN_ . '/includes/plugin.php' );
 
 	$plugins = get_plugins();
 	$active  = get_option( 'active_plugins', array() );

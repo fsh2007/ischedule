@@ -16,7 +16,7 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	}
 
 	function prepare_items() {
-		include( ABSPATH . 'wp-admin/includes/theme-install.php' );
+		include( ABSPATH . _WP_ADMIN_ . '/includes/theme-install.php' );
 
 		global $tabs, $tab, $paged, $type, $theme_field_defaults;
 		wp_reset_vars( array( 'tab' ) );

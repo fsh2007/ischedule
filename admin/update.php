@@ -12,7 +12,7 @@ if ( ! defined( 'IFRAME_REQUEST' ) && isset( $_GET['action'] ) && in_array( $_GE
 /** WordPress Administration Bootstrap */
 require_once('./admin.php');
 
-include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+include_once ABSPATH . _WP_ADMIN_ . '/includes/class-wp-upgrader.php';
 
 if ( isset($_GET['action']) ) {
 	$plugin = isset($_REQUEST['plugin']) ? trim($_REQUEST['plugin']) : '';
@@ -54,7 +54,7 @@ if ( isset($_GET['action']) ) {
 		$title = __('Update Plugin');
 		$parent_file = 'plugins.php';
 		$submenu_file = 'plugins.php';
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$nonce = 'upgrade-plugin_' . $plugin;
 		$url = 'update.php?action=upgrade-plugin&plugin=' . $plugin;
@@ -62,7 +62,7 @@ if ( isset($_GET['action']) ) {
 		$upgrader = new Plugin_Upgrader( new Plugin_Upgrader_Skin( compact('title', 'nonce', 'url', 'plugin') ) );
 		$upgrader->upgrade($plugin);
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	} elseif ('activate-plugin' == $action ) {
 		if ( ! current_user_can('update_plugins') )
@@ -92,7 +92,7 @@ if ( isset($_GET['action']) ) {
 		if ( ! current_user_can('install_plugins') )
 			wp_die( __( 'You do not have sufficient permissions to install plugins on this site.' ) );
 
-		include_once ABSPATH . 'wp-admin/includes/plugin-install.php'; //for plugins_api..
+		include_once ABSPATH . _WP_ADMIN_ . '/includes/plugin-install.php'; //for plugins_api..
 
 		check_admin_referer('install-plugin_' . $plugin);
 		$api = plugins_api('plugin_information', array('slug' => $plugin, 'fields' => array('sections' => false) ) ); //Save on a bit of bandwidth.
@@ -103,7 +103,7 @@ if ( isset($_GET['action']) ) {
 		$title = __('Plugin Install');
 		$parent_file = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$title = sprintf( __('Installing Plugin: %s'), $api->name . ' ' . $api->version );
 		$nonce = 'install-plugin_' . $plugin;
@@ -116,7 +116,7 @@ if ( isset($_GET['action']) ) {
 		$upgrader = new Plugin_Upgrader( new Plugin_Installer_Skin( compact('title', 'url', 'nonce', 'plugin', 'api') ) );
 		$upgrader->install($api->download_link);
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	} elseif ( 'upload-plugin' == $action ) {
 
@@ -130,7 +130,7 @@ if ( isset($_GET['action']) ) {
 		$title = __('Upload Plugin');
 		$parent_file = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$title = sprintf( __('Installing Plugin from uploaded file: %s'), basename( $file_upload->filename ) );
 		$nonce = 'plugin-upload';
@@ -143,7 +143,7 @@ if ( isset($_GET['action']) ) {
 		if ( $result || is_wp_error($result) )
 			$file_upload->cleanup();
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	} elseif ( 'upgrade-theme' == $action ) {
 
@@ -157,7 +157,7 @@ if ( isset($_GET['action']) ) {
 		$title = __('Update Theme');
 		$parent_file = 'themes.php';
 		$submenu_file = 'themes.php';
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$nonce = 'upgrade-theme_' . $theme;
 		$url = 'update.php?action=upgrade-theme&theme=' . $theme;
@@ -165,7 +165,7 @@ if ( isset($_GET['action']) ) {
 		$upgrader = new Theme_Upgrader( new Theme_Upgrader_Skin( compact('title', 'nonce', 'url', 'theme') ) );
 		$upgrader->upgrade($theme);
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 	} elseif ( 'update-selected-themes' == $action ) {
 		if ( ! current_user_can( 'update_themes' ) )
 			wp_die( __( 'You do not have sufficient permissions to update themes for this site.' ) );
@@ -196,7 +196,7 @@ if ( isset($_GET['action']) ) {
 		if ( ! current_user_can('install_themes') )
 			wp_die( __( 'You do not have sufficient permissions to install themes on this site.' ) );
 
-		include_once ABSPATH . 'wp-admin/includes/theme-install.php'; //for themes_api..
+		include_once ABSPATH . _WP_ADMIN_ . '/includes/theme-install.php'; //for themes_api..
 
 		check_admin_referer('install-theme_' . $theme);
 		$api = themes_api('theme_information', array('slug' => $theme, 'fields' => array('sections' => false, 'tags' => false) ) ); //Save on a bit of bandwidth.
@@ -209,7 +209,7 @@ if ( isset($_GET['action']) ) {
 		$title = __('Install Themes');
 		$parent_file = 'themes.php';
 		$submenu_file = 'themes.php';
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$title = sprintf( __('Installing Theme: %s'), $api->name . ' ' . $api->version );
 		$nonce = 'install-theme_' . $theme;
@@ -219,7 +219,7 @@ if ( isset($_GET['action']) ) {
 		$upgrader = new Theme_Upgrader( new Theme_Installer_Skin( compact('title', 'url', 'nonce', 'plugin', 'api') ) );
 		$upgrader->install($api->download_link);
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	} elseif ( 'upload-theme' == $action ) {
 
@@ -236,7 +236,7 @@ if ( isset($_GET['action']) ) {
 		$parent_file = 'themes.php';
 		$submenu_file = 'theme-install.php';
 
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		$title = sprintf( __('Installing Theme from uploaded file: %s'), basename( $file_upload->filename ) );
 		$nonce = 'theme-upload';
@@ -249,7 +249,7 @@ if ( isset($_GET['action']) ) {
 		if ( $result || is_wp_error($result) )
 			$file_upload->cleanup();
 
-		include(ABSPATH . 'wp-admin/admin-footer.php');
+		include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	} else {
 		do_action('update-custom_' . $action);

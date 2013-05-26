@@ -126,7 +126,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-include( ABSPATH . 'wp-admin/admin-header.php' );
+include( ABSPATH . _WP_ADMIN_ . '/admin-header.php' );
 ?>
 <div class="wrap">
 <?php screen_icon('tools'); ?>
@@ -147,7 +147,7 @@ function network_step1( $errors = false ) {
 	if ( defined('DO_NOT_UPGRADE_GLOBAL_TABLES') ) {
 		echo '<div class="error"><p><strong>' . __('ERROR:') . '</strong> ' . __( 'The constant DO_NOT_UPGRADE_GLOBAL_TABLES cannot be defined when creating a network.' ) . '</p></div>';
 		echo '</div>';
-		include ( ABSPATH . 'wp-admin/admin-footer.php' );
+		include ( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );
 		die();
 	}
 
@@ -155,7 +155,7 @@ function network_step1( $errors = false ) {
 	if ( ! empty( $active_plugins ) ) {
 		echo '<div class="updated"><p><strong>' . __('Warning:') . '</strong> ' . sprintf( __( 'Please <a href="%s">deactivate your plugins</a> before enabling the Network feature.' ), admin_url( 'plugins.php?plugin_status=active' ) ) . '</p></div><p>' . __( 'Once the network is created, you may reactivate your plugins.' ) . '</p>';
 		echo '</div>';
-		include( ABSPATH . 'wp-admin/admin-footer.php' );
+		include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );
 		die();
 	}
 
@@ -166,7 +166,7 @@ function network_step1( $errors = false ) {
 		echo '<p>' . sprintf( __( 'You cannot use port numbers such as <code>%s</code>.' ), $has_ports ) . '</p>';
 		echo '<a href="' . esc_url( admin_url() ) . '">' . __( 'Return to Dashboard' ) . '</a>';
 		echo '</div>';
-		include( ABSPATH . 'wp-admin/admin-footer.php' );
+		include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );
 		die();
 	}
 
@@ -430,8 +430,8 @@ define('BLOG_ID_CURRENT_SITE', 1);
                 }
                 $web_config_file .= '
                 <rule name="WordPress Rule 2" stopProcessing="true">
-                    <match url="^' . $iis_subdir_match . 'wp-admin$" ignoreCase="false" />
-                    <action type="Redirect" url="' . $iis_subdir_replacement . 'wp-admin/" redirectType="Permanent" />
+                    <match url="^' . $iis_subdir_match . _WP_ADMIN_ .'$" ignoreCase="false" />
+                    <action type="Redirect" url="' . $iis_subdir_replacement . _WP_ADMIN_ . '/" redirectType="Permanent" />
                 </rule>
                 <rule name="WordPress Rule 3" stopProcessing="true">
                     <match url="^" ignoreCase="false" />
@@ -482,7 +482,7 @@ RewriteBase {$base}
 RewriteRule ^index\.php$ - [L]
 {$ms_files_rewriting}
 # add a trailing slash to /wp-admin
-RewriteRule ^{$subdir_match}wp-admin$ {$subdir_replacement_01}wp-admin/ [R=301,L]
+RewriteRule ^{$subdir_match}_WP_ADMIN_$ {$subdir_replacement_01}_WP_ADMIN_/ [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -514,7 +514,7 @@ if ( $_POST ) {
 
 	check_admin_referer( 'install-network-1' );
 
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	require_once( ABSPATH . _WP_ADMIN_ . '/includes/upgrade.php' );
 	// create network tables
 	install_network();
 	$base              = parse_url( trailingslashit( get_option( 'home' ) ), PHP_URL_PATH );
@@ -540,4 +540,4 @@ if ( $_POST ) {
 ?>
 </div>
 
-<?php include( ABSPATH . 'wp-admin/admin-footer.php' ); ?>
+<?php include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' ); ?>

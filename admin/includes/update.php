@@ -215,7 +215,7 @@ function wp_update_plugin($plugin, $feedback = '') {
 	if ( !empty($feedback) )
 		add_filter('update_feedback', $feedback);
 
-	include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	include ABSPATH . 'admin/includes/class-wp-upgrader.php';
 	$upgrader = new Plugin_Upgrader();
 	return $upgrader->upgrade($plugin);
 }
@@ -240,7 +240,7 @@ function wp_update_theme($theme, $feedback = '') {
 	if ( !empty($feedback) )
 		add_filter('update_feedback', $feedback);
 
-	include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	include ABSPATH . 'admin/includes/class-wp-upgrader.php';
 	$upgrader = new Theme_Upgrader();
 	return $upgrader->upgrade($theme);
 }
@@ -289,7 +289,7 @@ function wp_update_core($current, $feedback = '') {
 	if ( !empty($feedback) )
 		add_filter('update_feedback', $feedback);
 
-	include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	include ABSPATH . 'admin/includes/class-wp-upgrader.php';
 	$upgrader = new Core_Upgrader();
 	return $upgrader->upgrade($current);
 

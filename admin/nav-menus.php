@@ -13,7 +13,7 @@
 require_once( './admin.php' );
 
 // Load all the nav menu interface functions
-require_once( ABSPATH . 'wp-admin/includes/nav-menu.php' );
+require_once( ABSPATH . _WP_ADMIN_ . '/includes/nav-menu.php' );
 
 if ( ! current_theme_supports( 'menus' ) && ! current_theme_supports( 'widgets' ) )
 	wp_die( __( 'Your theme does not support navigation menus or widgets.' ) );

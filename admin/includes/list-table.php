@@ -39,7 +39,7 @@ function _get_list_table( $class, $args = array() ) {
 
 	if ( isset( $core_classes[ $class ] ) ) {
 		foreach ( (array) $core_classes[ $class ] as $required )
-			require_once( ABSPATH . 'wp-admin/includes/class-wp-' . $required . '-list-table.php' );
+			require_once( ABSPATH . _WP_ADMIN_ . '/includes/class-wp-' . $required . '-list-table.php' );
 
 		if ( isset( $args['screen'] ) )
 			$args['screen'] = convert_to_screen( $args['screen'] );

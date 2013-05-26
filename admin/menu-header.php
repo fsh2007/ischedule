@@ -13,8 +13,8 @@
  * @name $self
  * @var string
  */
-$self = preg_replace('|^.*/wp-admin/network/|i', '', $_SERVER['PHP_SELF']);
-$self = preg_replace('|^.*/wp-admin/|i', '', $self);
+$self = preg_replace('|^.*/' . _WP_ADMIN_ . '/network/|i', '', $_SERVER['PHP_SELF']);
+$self = preg_replace('|^.*/' . _WP_ADMIN_ . '/|i', '', $self);
 $self = preg_replace('|^.*/plugins/|i', '', $self);
 $self = preg_replace('|^.*/mu-plugins/|i', '', $self);
 

@@ -1085,7 +1085,7 @@ html[dir="rtl"] .wp-switch-editor {
 }
 
 .wp-media-buttons .add_media span.wp-media-buttons-icon {
-	background: url('../../wp-admin/images/media-button.png') no-repeat top left;
+	background: url('../../admin/images/media-button.png') no-repeat top left;
 }
 
 .quicktags-toolbar {
@@ -1862,7 +1862,7 @@ RTL
 }
 
 #wp-fullscreen-buttons #wp_fs_image span.mce_image {
-	background-image: url('../../wp-admin/images/media-button.png');
+	background-image: url('../../admin/images/media-button.png');
 	background-position: 2px 2px;
 }
 
@@ -2088,7 +2088,7 @@ RTL
 
 	.wp-media-buttons .add_media span.wp-media-buttons-icon,
 	#wp-fullscreen-buttons #wp_fs_image span.mce_image {
-		background-image: url('../../wp-admin/images/media-button-2x.png');
+		background-image: url('../../admin/images/media-button-2x.png');
 		background-size: 16px 16px;
 	}
 

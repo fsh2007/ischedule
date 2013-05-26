@@ -33,7 +33,7 @@ header('Content-Type: text/html; charset=' . get_option('blog_charset'));
 
 if ( isset( $_REQUEST['action'] ) && 'upload-attachment' === $_REQUEST['action'] ) {
 	define( 'DOING_AJAX', true );
-	include ABSPATH . 'wp-admin/includes/ajax-actions.php';
+	include ABSPATH . _WP_ADMIN_ . '/includes/ajax-actions.php';
 
 	send_nosniff_header();
 	nocache_headers();

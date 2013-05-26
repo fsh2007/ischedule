@@ -38,10 +38,10 @@ if ( file_exists( ABSPATH . 'wp-config.php') ) {
 	// A config file doesn't exist
 
 	// Set a path for the link to the installer
-	if ( strpos($_SERVER['PHP_SELF'], 'wp-admin') !== false )
+	if ( strpos($_SERVER['PHP_SELF'], _WP_ADMIN) !== false )
 		$path = 'setup-config.php';
 	else
-		$path = 'wp-admin/setup-config.php';
+		$path = _WP_ADMIN_ . '/setup-config.php';
 
 	define( 'WPINC', 'wp-includes' );
 	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );

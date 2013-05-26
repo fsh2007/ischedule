@@ -20,11 +20,11 @@ global $pagenow,
 if ( is_admin() ) {
 	// wp-admin pages are checked more carefully
 	if ( is_network_admin() )
-		preg_match('#/wp-admin/network/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
+		preg_match('#/' . _WP_ADMIN_ . '/network/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
 	elseif ( is_user_admin() )
-		preg_match('#/wp-admin/user/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
+		preg_match('#/' . _WP_ADMIN_ . '/user/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
 	else
-		preg_match('#/wp-admin/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
+		preg_match('#/' . _WP_ADMIN_ .'/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches);
 	$pagenow = $self_matches[1];
 	$pagenow = trim($pagenow, '/');
 	$pagenow = preg_replace('#\?.*?$#', '', $pagenow);

@@ -87,7 +87,7 @@ if ( $action ) {
 			$title = __( 'Update Themes' );
 			$parent_file = 'themes.php';
 
-			require_once(ABSPATH . 'wp-admin/admin-header.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 			echo '<div class="wrap">';
 			screen_icon();
@@ -98,7 +98,7 @@ if ( $action ) {
 
 			echo "<iframe src='$url' style='width: 100%; height:100%; min-height:850px;'></iframe>";
 			echo '</div>';
-			require_once(ABSPATH . 'wp-admin/admin-footer.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 			exit;
 			break;
 		case 'delete-selected':
@@ -126,13 +126,13 @@ if ( $action ) {
 				exit;
 			}
 
-			include(ABSPATH . 'wp-admin/update.php');
+			include(ABSPATH . _WP_ADMIN_ . '/update.php');
 
 			$parent_file = 'themes.php';
 
 			if ( ! isset( $_REQUEST['verify-delete'] ) ) {
 				wp_enqueue_script( 'jquery' );
-				require_once( ABSPATH . 'wp-admin/admin-header.php' );
+				require_once( ABSPATH . _WP_ADMIN_ . '/admin-header.php' );
 				?>
 			<div class="wrap">
 				<?php
@@ -172,7 +172,7 @@ if ( $action ) {
 				</div>
 			</div>
 				<?php
-				require_once(ABSPATH . 'wp-admin/admin-footer.php');
+				require_once(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 				exit;
 			} // Endif verify-delete
 
@@ -220,7 +220,7 @@ get_current_screen()->set_help_sidebar(
 $title = __('Themes');
 $parent_file = 'themes.php';
 
-require_once(ABSPATH . 'wp-admin/admin-header.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 ?>
 
@@ -270,4 +270,4 @@ if ( 'broken' == $status )
 </div>
 
 <?php
-include(ABSPATH . 'wp-admin/admin-footer.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');

@@ -7,7 +7,7 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once('./admin.php');
+require_once('./admin.fphp');
 
 if ( !current_user_can('switch_themes') && !current_user_can('edit_theme_options') )
 	wp_die( __( 'Cheatin&#8217; uh?' ) );
@@ -175,7 +175,7 @@ $customize_title = sprintf( __( 'Customize &#8220;%s&#8221;' ), $ct->display('Na
 				$menu_file = $item[2];
 				if ( false !== ( $pos = strpos( $menu_file, '?' ) ) )
 					$menu_file = substr( $menu_file, 0, $pos );
-				if ( file_exists( ABSPATH . "wp-admin/$menu_file" ) ) {
+				if ( file_exists( ABSPATH . _WP_ADMIN_ . "/$menu_file" ) ) {
 					$options[] = "<a href='{$item[2]}'$class>{$item[0]}</a>";
 				} else {
 					$options[] = "<a href='themes.php?page={$item[2]}'$class>{$item[0]}</a>";

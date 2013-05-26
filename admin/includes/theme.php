@@ -28,9 +28,9 @@ function delete_theme($stylesheet, $redirect = '') {
 		$data = ob_get_contents();
 		ob_end_clean();
 		if ( ! empty($data) ){
-			include_once( ABSPATH . 'wp-admin/admin-header.php');
+			include_once( ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 			echo $data;
-			include( ABSPATH . 'wp-admin/admin-footer.php');
+			include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 			exit;
 		}
 		return;
@@ -41,9 +41,9 @@ function delete_theme($stylesheet, $redirect = '') {
 		$data = ob_get_contents();
 		ob_end_clean();
 		if ( ! empty($data) ) {
-			include_once( ABSPATH . 'wp-admin/admin-header.php');
+			include_once( ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 			echo $data;
-			include( ABSPATH . 'wp-admin/admin-footer.php');
+			include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 			exit;
 		}
 		return;

@@ -633,7 +633,7 @@ function preview_theme_ob_filter_callback( $matches ) {
 	if ( strpos($matches[4], 'onclick') !== false )
 		$matches[4] = preg_replace('#onclick=([\'"]).*?(?<!\\\)\\1#i', '', $matches[4]); //Strip out any onclicks from rest of <a>. (?<!\\\) means to ignore the '" if its escaped by \  to prevent breaking mid-attribute.
 	if (
-		( false !== strpos($matches[3], '/wp-admin/') )
+		( false !== strpos($matches[3], '/' . _WP_ADMIN_ . '/') )
 	||
 		( false !== strpos( $matches[3], '://' ) && 0 !== strpos( $matches[3], home_url() ) )
 	||
@@ -1399,7 +1399,7 @@ function _custom_header_background_just_in_time() {
 			add_action( 'wp_head', $args[0]['wp-head-callback'] );
 
 		if ( is_admin() ) {
-			require_once( ABSPATH . 'wp-admin/custom-header.php' );
+			require_once( ABSPATH . _WP_ADMIN_ . '/custom-header.php' );
 			$custom_image_header = new Custom_Image_Header( $args[0]['admin-head-callback'], $args[0]['admin-preview-callback'] );
 		}
 	}
@@ -1412,7 +1412,7 @@ function _custom_header_background_just_in_time() {
 		add_action( 'wp_head', $args[0]['wp-head-callback'] );
 
 		if ( is_admin() ) {
-			require_once( ABSPATH . 'wp-admin/custom-background.php' );
+			require_once( ABSPATH . _WP_ADMIN_ . '/custom-background.php' );
 			$custom_background = new Custom_Background( $args[0]['admin-head-callback'], $args[0]['admin-preview-callback'] );
 		}
 	}

@@ -106,7 +106,7 @@ if ( wp_script_is( 'customize-loader', 'queue' ) && current_user_can( 'edit_them
 
 <div id="wpwrap">
 <a tabindex="1" href="#wpbody-content" class="screen-reader-shortcut"><?php _e('Skip to main content'); ?></a>
-<?php require(ABSPATH . 'wp-admin/menu-header.php'); ?>
+<?php require(ABSPATH . _WP_ADMIN_ . '/menu-header.php'); ?>
 <div id="wpcontent">
 
 <?php
@@ -136,4 +136,4 @@ else
 do_action('all_admin_notices');
 
 if ( $parent_file == 'options-general.php' )
-	require(ABSPATH . 'wp-admin/options-head.php');
+	require(ABSPATH . _WP_ADMIN_ . '/options-head.php');

@@ -14,59 +14,59 @@ if ( ! defined('WP_ADMIN') ) {
 }
 
 /** WordPress Bookmark Administration API */
-require_once(ABSPATH . 'wp-admin/includes/bookmark.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/bookmark.php');
 
 /** WordPress Comment Administration API */
-require_once(ABSPATH . 'wp-admin/includes/comment.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/comment.php');
 
 /** WordPress Administration File API */
-require_once(ABSPATH . 'wp-admin/includes/file.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/file.php');
 
 /** WordPress Image Administration API */
-require_once(ABSPATH . 'wp-admin/includes/image.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/image.php');
 
 /** WordPress Media Administration API */
-require_once(ABSPATH . 'wp-admin/includes/media.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/media.php');
 
 /** WordPress Import Administration API */
-require_once(ABSPATH . 'wp-admin/includes/import.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/import.php');
 
 /** WordPress Misc Administration API */
-require_once(ABSPATH . 'wp-admin/includes/misc.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/misc.php');
 
 /** WordPress Plugin Administration API */
-require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/plugin.php');
 
 /** WordPress Post Administration API */
-require_once(ABSPATH . 'wp-admin/includes/post.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/post.php');
 
 /** WordPress Administration Screen API */
-require_once(ABSPATH . 'wp-admin/includes/screen.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/screen.php');
 
 /** WordPress Taxonomy Administration API */
-require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/taxonomy.php');
 
 /** WordPress Template Administration API */
-require_once(ABSPATH . 'wp-admin/includes/template.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/template.php');
 
 /** WordPress List Table Administration API and base class */
-require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
-require_once(ABSPATH . 'wp-admin/includes/list-table.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/class-wp-list-table.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/list-table.php');
 
 /** WordPress Theme Administration API */
-require_once(ABSPATH . 'wp-admin/includes/theme.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/theme.php');
 
 /** WordPress User Administration API */
-require_once(ABSPATH . 'wp-admin/includes/user.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/user.php');
 
 /** WordPress Update Administration API */
-require_once(ABSPATH . 'wp-admin/includes/update.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/update.php');
 
 /** WordPress Deprecated Administration API */
-require_once(ABSPATH . 'wp-admin/includes/deprecated.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/deprecated.php');
 
 /** WordPress Multisite support API */
 if ( is_multisite() ) {
-	require_once(ABSPATH . 'wp-admin/includes/ms.php');
-	require_once(ABSPATH . 'wp-admin/includes/ms-deprecated.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/ms.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/ms-deprecated.php');
 }

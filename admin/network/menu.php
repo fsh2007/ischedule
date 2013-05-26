@@ -60,4 +60,4 @@ $submenu[ 'upgrade.php' ][15] = array( __( 'Update Network' ), 'manage_network',
 
 $menu[99] = array( '', 'read', 'separator-last', '', 'wp-menu-separator-last' );
 
-require_once(ABSPATH . 'wp-admin/includes/menu.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/menu.php');

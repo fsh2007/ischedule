@@ -64,7 +64,7 @@ if ( get_option('db_upgraded') ) {
 	}
 }
 
-require_once(ABSPATH . 'wp-admin/includes/admin.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/admin.php');
 
 auth_redirect();
 
@@ -99,11 +99,11 @@ else
 	$taxnow = '';
 
 if ( WP_NETWORK_ADMIN )
-	require(ABSPATH . 'wp-admin/network/menu.php');
+	require(ABSPATH . _WP_ADMIN_ . '/network/menu.php');
 elseif ( WP_USER_ADMIN )
-	require(ABSPATH . 'wp-admin/user/menu.php');
+	require(ABSPATH . _WP_ADMIN_ . '/user/menu.php');
 else
-	require(ABSPATH . 'wp-admin/menu.php');
+	require(ABSPATH . _WP_ADMIN_ . '/menu.php');
 
 if ( current_user_can( 'manage_options' ) )
 	@ini_set( 'memory_limit', apply_filters( 'admin_memory_limit', WP_MAX_MEMORY_LIMIT ) );
@@ -146,7 +146,7 @@ if ( isset($plugin_page) ) {
 	if ( $page_hook ) {
 		do_action('load-' . $page_hook);
 		if (! isset($_GET['noheader']))
-			require_once(ABSPATH . 'wp-admin/admin-header.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		do_action($page_hook);
 	} else {
@@ -159,7 +159,7 @@ if ( isset($plugin_page) ) {
 		do_action('load-' . $plugin_page);
 
 		if ( !isset($_GET['noheader']))
-			require_once(ABSPATH . 'wp-admin/admin-header.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 		if ( file_exists(WPMU_PLUGIN_DIR . "/$plugin_page") )
 			include(WPMU_PLUGIN_DIR . "/$plugin_page");
@@ -167,7 +167,7 @@ if ( isset($plugin_page) ) {
 			include(WP_PLUGIN_DIR . "/$plugin_page");
 	}
 
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	exit();
 } else if (isset($_GET['import'])) {
@@ -194,9 +194,9 @@ if ( isset($plugin_page) ) {
 	$title = __('Import');
 
 	if (! isset($_GET['noheader']))
-		require_once(ABSPATH . 'wp-admin/admin-header.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/upgrade.php');
 
 	define('WP_IMPORTING', true);
 
@@ -205,7 +205,7 @@ if ( isset($plugin_page) ) {
 
 	call_user_func($wp_importers[$importer][2]);
 
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 	// Make sure rules are flushed
 	flush_rewrite_rules(false);

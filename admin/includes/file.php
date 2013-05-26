@@ -662,7 +662,7 @@ function _unzip_file_pclzip($file, $to, $needed_dirs = array()) {
 		mb_internal_encoding('ISO-8859-1');
 	}
 
-	require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/class-pclzip.php');
 
 	$archive = new PclZip($file);
 
@@ -789,7 +789,7 @@ function copy_dir($from, $to, $skip_list = array() ) {
 function WP_Filesystem( $args = false, $context = false ) {
 	global $wp_filesystem;
 
-	require_once(ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/class-wp-filesystem-base.php');
 
 	$method = get_filesystem_method($args, $context);
 
@@ -797,7 +797,7 @@ function WP_Filesystem( $args = false, $context = false ) {
 		return false;
 
 	if ( ! class_exists("WP_Filesystem_$method") ) {
-		$abstraction_file = apply_filters('filesystem_method_file', ABSPATH . 'wp-admin/includes/class-wp-filesystem-' . $method . '.php', $method);
+		$abstraction_file = apply_filters('filesystem_method_file', ABSPATH . _WP_ADMIN_ . '/includes/class-wp-filesystem-' . $method . '.php', $method);
 		if ( ! file_exists($abstraction_file) )
 			return;
 

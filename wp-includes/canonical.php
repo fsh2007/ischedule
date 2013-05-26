@@ -511,7 +511,7 @@ function wp_redirect_admin_locations() {
 		return;
 
 	$admins = array(
-		home_url( 'wp-admin', 'relative' ),
+		home_url( _WP_ADMIN_, 'relative' ),
 		home_url( 'dashboard', 'relative' ),
 		home_url( 'admin', 'relative' ),
 		site_url( 'dashboard', 'relative' ),

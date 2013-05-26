@@ -2275,7 +2275,7 @@ function edit_form_image_editor() {
 
 	$open = isset( $_GET['image-editor'] );
 	if ( $open )
-		require_once ABSPATH . 'wp-admin/includes/image-edit.php';
+		require_once ABSPATH . _WP_ADMIN_ . '/includes/image-edit.php';
 
 	$thumb_url = false;
 	if ( $attachment_id = intval( $post->ID ) )

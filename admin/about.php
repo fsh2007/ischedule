@@ -13,7 +13,7 @@ $title = __( 'About' );
 
 list( $display_version ) = explode( '-', $wp_version );
 
-include( ABSPATH . 'wp-admin/admin-header.php' );
+include( ABSPATH . _WP_ADMIN_ . '/admin-header.php' );
 ?>
 <div class="wrap about-wrap">
 
@@ -140,7 +140,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 </div>
 <?php
 
-include( ABSPATH . 'wp-admin/admin-footer.php' );
+include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );
 
 // These are strings we may use to describe maintenance/security releases, where we aim for no new strings.
 return;

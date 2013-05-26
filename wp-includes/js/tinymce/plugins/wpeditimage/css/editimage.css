@@ -294,19 +294,19 @@ form {
 }
 
 .image-align-none-label {
-	background: url(../../../../../../wp-admin/images/align-none.png) no-repeat center left;
+	background: url(../../../../../../admin/images/align-none.png) no-repeat center left;
 }
 
 .image-align-left-label {
-	background: url(../../../../../../wp-admin/images/align-left.png) no-repeat center left;
+	background: url(../../../../../../admin/images/align-left.png) no-repeat center left;
 }
 
 .image-align-center-label {
-	background: url(../../../../../../wp-admin/images/align-center.png) no-repeat center left;
+	background: url(../../../../../../admin/images/align-center.png) no-repeat center left;
 }
 
 .image-align-right-label {
-	background: url(../../../../../../wp-admin/images/align-right.png) no-repeat center left;
+	background: url(../../../../../../admin/images/align-right.png) no-repeat center left;
 }
 
 div#media-upload-header {
@@ -422,22 +422,22 @@ body#media-upload.rtl ul#sidemenu {
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
 	.image-align-none-label {
-		background: url(../../../../../../wp-admin/images/align-none-2x.png) no-repeat center left;
+		background: url(../../../../../../admin/images/align-none-2x.png) no-repeat center left;
 		background-size: auto 15px;
 	}
 
 	.image-align-left-label {
-		background: url(../../../../../../wp-admin/images/align-left-2x.png) no-repeat center left;
+		background: url(../../../../../../admin/images/align-left-2x.png) no-repeat center left;
 		background-size: auto 15px;
 	}
 
 	.image-align-center-label {
-		background: url(../../../../../../wp-admin/images/align-center-2x.png) no-repeat center left;
+		background: url(../../../../../../admin/images/align-center-2x.png) no-repeat center left;
 		background-size: auto 15px;
 	}
 
 	.image-align-right-label {
-		background: url(../../../../../../wp-admin/images/align-right-2x.png) no-repeat center left;
+		background: url(../../../../../../admin/images/align-right-2x.png) no-repeat center left;
 		background-size: auto 15px;
 	}
 }

@@ -10,7 +10,7 @@
 require_once( './admin.php' );
 
 /** WordPress Administration Widgets API */
-require_once(ABSPATH . 'wp-admin/includes/widgets.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/widgets.php');
 
 if ( ! current_user_can('edit_theme_options') )
 	wp_die( __( 'Cheatin&#8217; uh?' ));

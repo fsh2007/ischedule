@@ -12,7 +12,7 @@
 require_once('./admin.php');
 
 /** Load WordPress dashboard API */
-require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/includes/dashboard.php');
 
 wp_dashboard_setup();
 
@@ -101,7 +101,7 @@ $screen->set_help_sidebar(
 	'<p>' . __( '<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
 
-include (ABSPATH . 'wp-admin/admin-header.php');
+include (ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 $today = current_time('mysql', 1);
 ?>
@@ -135,4 +135,4 @@ $today = current_time('mysql', 1);
 
 </div><!-- wrap -->
 
-<?php require(ABSPATH . 'wp-admin/admin-footer.php'); ?>
+<?php require(ABSPATH . _WP_ADMIN_ . '/admin-footer.php'); ?>

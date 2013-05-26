@@ -130,7 +130,7 @@ function wp_ajax_imgedit_preview() {
 
 	check_ajax_referer( "image_editor-$post_id" );
 
-	include_once( ABSPATH . 'wp-admin/includes/image-edit.php' );
+	include_once( ABSPATH . _WP_ADMIN_ . '/includes/image-edit.php' );
 	if ( ! stream_preview_image($post_id) )
 		wp_die( -1 );
 
@@ -188,7 +188,7 @@ function wp_ajax_autocomplete_user() {
 }
 
 function wp_ajax_dashboard_widgets() {
-	require_once ABSPATH . 'wp-admin/includes/dashboard.php';
+	require_once ABSPATH . _WP_ADMIN_ . '/includes/dashboard.php';
 
 	switch ( $_GET['widget'] ) {
 		case 'dashboard_incoming_links' :
@@ -767,7 +767,7 @@ function wp_ajax_replyto_comment( $action ) {
 
 	ob_start();
 		if ( 'dashboard' == $_REQUEST['mode'] ) {
-			require_once( ABSPATH . 'wp-admin/includes/dashboard.php' );
+			require_once( ABSPATH . _WP_ADMIN_ . '/includes/dashboard.php' );
 			_wp_dashboard_recent_comments_row( $comment );
 		} else {
 			if ( 'single' == $_REQUEST['mode'] ) {
@@ -841,7 +841,7 @@ function wp_ajax_add_menu_item() {
 	if ( ! current_user_can( 'edit_theme_options' ) )
 		wp_die( -1 );
 
-	require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+	require_once ABSPATH . _WP_ADMIN_ . '/includes/nav-menu.php';
 
 	// For performance reasons, we omit some object properties from the checklist.
 	// The following is a hacky way to restore them when adding non-custom items.
@@ -1184,7 +1184,7 @@ function wp_ajax_menu_get_metabox() {
 	if ( ! current_user_can( 'edit_theme_options' ) )
 		wp_die( -1 );
 
-	require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+	require_once ABSPATH . _WP_ADMIN_ . '/includes/nav-menu.php';
 
 	if ( isset( $_POST['item-type'] ) && 'post_type' == $_POST['item-type'] ) {
 		$type = 'posttype';
@@ -1280,7 +1280,7 @@ function wp_ajax_menu_quick_search() {
 	if ( ! current_user_can( 'edit_theme_options' ) )
 		wp_die( -1 );
 
-	require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+	require_once ABSPATH . _WP_ADMIN_ . '/includes/nav-menu.php';
 
 	_wp_ajax_menu_quick_search( $_POST );
 
@@ -1652,7 +1652,7 @@ function wp_ajax_image_editor() {
 		wp_die( -1 );
 
 	check_ajax_referer( "image_editor-$attachment_id" );
-	include_once( ABSPATH . 'wp-admin/includes/image-edit.php' );
+	include_once( ABSPATH . _WP_ADMIN_ . '/includes/image-edit.php' );
 
 	$msg = false;
 	switch ( $_POST['do'] ) {

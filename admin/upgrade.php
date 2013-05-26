@@ -20,7 +20,7 @@ require( '../wp-load.php' );
 nocache_headers();
 
 timer_start();
-require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+require_once( ABSPATH . _WP_ADMIN_ . '/includes/upgrade.php' );
 
 delete_site_transient('update_core');
 

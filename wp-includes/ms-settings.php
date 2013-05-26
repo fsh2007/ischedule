@@ -42,7 +42,7 @@ if ( !isset( $current_site ) || !isset( $current_blog ) ) {
 		$cookie_domain = substr( $cookie_domain, 4 );
 
 	$path = preg_replace( '|([a-z0-9-]+.php.*)|', '', $_SERVER['REQUEST_URI'] );
-	$path = str_replace ( '/wp-admin/', '/', $path );
+	$path = str_replace ( '/' . _WP_ADMIN_ . '/', '/', $path );
 	$path = preg_replace( '|(/[a-z0-9-]+?/).*|', '$1', $path );
 
 	$current_site = wpmu_current_site();
@@ -68,7 +68,7 @@ if ( !isset( $current_site ) || !isset( $current_blog ) ) {
 			$blogname = substr( $blogname, 0, strpos( $blogname, '/' ) );
 		if ( false !== strpos( $blogname, '?' ) )
 			$blogname = substr( $blogname, 0, strpos( $blogname, '?' ) );
-		$reserved_blognames = array( 'page', 'comments', 'blog', 'wp-admin', 'wp-includes', 'wp-content', 'files', 'feed' );
+		$reserved_blognames = array( 'page', 'comments', 'blog', _WP_ADMIN_, 'wp-includes', 'wp-content', 'files', 'feed' );
 		if ( $blogname != '' && ! in_array( $blogname, $reserved_blognames ) && ! is_file( $blogname ) )
 			$path .= $blogname . '/';
 		$current_blog = wp_cache_get( 'current_blog_' . $domain . $path, 'site-options' );

@@ -171,7 +171,7 @@ function list_plugin_updates() {
 
 	$cur_wp_version = preg_replace('/-.*$/', '', $wp_version);
 
-	require_once(ABSPATH . 'wp-admin/includes/plugin-install.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/includes/plugin-install.php');
 	$plugins = get_plugin_updates();
 	if ( empty( $plugins ) ) {
 		echo '<h3>' . __( 'Plugins' ) . '</h3>';
@@ -427,7 +427,7 @@ get_current_screen()->set_help_sidebar(
 if ( 'upgrade-core' == $action ) {
 
 	wp_version_check();
-	require_once(ABSPATH . 'wp-admin/admin-header.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 	?>
 	<div class="wrap">
 	<?php screen_icon('tools'); ?>
@@ -456,7 +456,7 @@ if ( 'upgrade-core' == $action ) {
 		list_theme_updates();
 	do_action('core_upgrade_preamble');
 	echo '</div>';
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 } elseif ( 'do-core-upgrade' == $action || 'do-core-reinstall' == $action ) {
 
@@ -472,7 +472,7 @@ if ( 'upgrade-core' == $action ) {
 	elseif ( isset( $_POST['undismiss'] ) )
 		do_undismiss_core_update();
 
-	require_once(ABSPATH . 'wp-admin/admin-header.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 	if ( 'do-core-reinstall' == $action )
 		$reinstall = true;
 	else
@@ -481,7 +481,7 @@ if ( 'upgrade-core' == $action ) {
 	if ( isset( $_POST['upgrade'] ) )
 		do_core_upgrade($reinstall);
 
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 } elseif ( 'do-plugin-upgrade' == $action ) {
 
@@ -504,13 +504,13 @@ if ( 'upgrade-core' == $action ) {
 
 	$title = __('Update Plugins');
 
-	require_once(ABSPATH . 'wp-admin/admin-header.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 	echo '<div class="wrap">';
 	screen_icon('plugins');
 	echo '<h2>' . esc_html__('Update Plugins') . '</h2>';
 	echo "<iframe src='$url' style='width: 100%; height: 100%; min-height: 750px;' frameborder='0'></iframe>";
 	echo '</div>';
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 } elseif ( 'do-theme-upgrade' == $action ) {
 
@@ -533,13 +533,13 @@ if ( 'upgrade-core' == $action ) {
 
 	$title = __('Update Themes');
 
-	require_once(ABSPATH . 'wp-admin/admin-header.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 	echo '<div class="wrap">';
 	screen_icon('themes');
 	echo '<h2>' . esc_html__('Update Themes') . '</h2>';
 	echo "<iframe src='$url' style='width: 100%; height: 100%; min-height: 750px;' frameborder='0'></iframe>";
 	echo '</div>';
-	include(ABSPATH . 'wp-admin/admin-footer.php');
+	include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 
 } else {
 	do_action('update-core-custom_' . $action);

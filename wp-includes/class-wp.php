@@ -235,10 +235,10 @@ class WP {
 			}
 
 			// If req_uri is empty or if it is a request for ourself, unset error.
-			if ( empty($request) || $req_uri == $self || strpos($_SERVER['PHP_SELF'], 'wp-admin/') !== false ) {
+			if ( empty($request) || $req_uri == $self || strpos($_SERVER['PHP_SELF'], _WP_ADMIN_ . '/') !== false ) {
 				unset( $error, $_GET['error'] );
 
-				if ( isset($perma_query_vars) && strpos($_SERVER['PHP_SELF'], 'wp-admin/') !== false )
+				if ( isset($perma_query_vars) && strpos($_SERVER['PHP_WP_ADMIN_ . '_WP_ADMIN_ . '/') !== false )
 					unset( $perma_query_vars );
 
 				$this->did_permalink = false;

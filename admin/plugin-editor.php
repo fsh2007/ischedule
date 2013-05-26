@@ -130,7 +130,7 @@ default:
 		'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 	);
 
-	require_once(ABSPATH . 'wp-admin/admin-header.php');
+	require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 	update_recently_edited(WP_PLUGIN_DIR . '/' . $file);
 
@@ -157,7 +157,7 @@ default:
  <div id="message" class="updated"><p><?php _e('This plugin has been deactivated because your changes resulted in a <strong>fatal error</strong>.') ?></p>
 	<?php
 		if ( wp_verify_nonce($_GET['_error_nonce'], 'plugin-activation-error_' . $file) ) { ?>
-	<iframe style="border:0" width="100%" height="70px" src="<?php bloginfo('wpurl'); ?>/wp-admin/plugins.php?action=error_scrape&amp;plugin=<?php echo esc_attr($file); ?>&amp;_wpnonce=<?php echo esc_attr($_GET['_error_nonce']); ?>"></iframe>
+	<iframe style="border:0" width="100%" height="70px" src="<?php bloginfo('wpurl'); ?>/<?php echo _WP_ADMIN_; ?>/plugins.php?action=error_scrape&amp;plugin=<?php echo esc_attr($file); ?>&amp;_wpnonce=<?php echo esc_attr($_GET['_error_nonce']); ?>"></iframe>
 	<?php } ?>
 </div>
 <?php endif; ?>
@@ -265,4 +265,4 @@ jQuery(document).ready(function($){
 <?php
 	break;
 }
-include(ABSPATH . "wp-admin/admin-footer.php");
+include(ABSPATH . _WP_ADMIN_ . "/admin-footer.php");

@@ -113,7 +113,7 @@ if ( $action ) {
 			$title = __( 'Update Plugins' );
 			$parent_file = 'plugins.php';
 
-			require_once(ABSPATH . 'wp-admin/admin-header.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 			echo '<div class="wrap">';
 			screen_icon();
@@ -124,7 +124,7 @@ if ( $action ) {
 
 			echo "<iframe src='$url' style='width: 100%; height:100%; min-height:850px;'></iframe>";
 			echo '</div>';
-			require_once(ABSPATH . 'wp-admin/admin-footer.php');
+			require_once(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 			exit;
 			break;
 		case 'error_scrape':
@@ -220,13 +220,13 @@ if ( $action ) {
 				exit;
 			}
 
-			include(ABSPATH . 'wp-admin/update.php');
+			include(ABSPATH . _WP_ADMIN_ . '/update.php');
 
 			$parent_file = 'plugins.php';
 
 			if ( ! isset($_REQUEST['verify-delete']) ) {
 				wp_enqueue_script('jquery');
-				require_once(ABSPATH . 'wp-admin/admin-header.php');
+				require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 				?>
 			<div class="wrap">
 				<?php
@@ -312,7 +312,7 @@ if ( $action ) {
 				</div>
 			</div>
 				<?php
-				require_once(ABSPATH . 'wp-admin/admin-footer.php');
+				require_once(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');
 				exit;
 			} //Endif verify-delete
 			$delete_result = delete_plugins($plugins);
@@ -359,7 +359,7 @@ get_current_screen()->set_help_sidebar(
 $title = __('Plugins');
 $parent_file = 'plugins.php';
 
-require_once(ABSPATH . 'wp-admin/admin-header.php');
+require_once(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 
 $invalid = validate_active_plugins();
 if ( !empty($invalid) )
@@ -434,4 +434,4 @@ if ( $s )
 </div>
 
 <?php
-include(ABSPATH . 'wp-admin/admin-footer.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');

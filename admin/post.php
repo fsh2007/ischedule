@@ -116,7 +116,7 @@ case 'post-quickpress-save':
 	if ( 0 === strpos( $action, 'post-quickpress' ) ) {
 		$_POST['post_ID'] = $post_id;
 		// output the quickpress dashboard widget
-		require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
+		require_once(ABSPATH . _WP_ADMIN_ . '/includes/dashboard.php');
 		wp_dashboard_quick_press();
 		exit;
 	}

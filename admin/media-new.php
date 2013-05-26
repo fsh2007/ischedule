@@ -57,7 +57,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-require_once( ABSPATH . 'wp-admin/admin-header.php' );
+require_once( ABSPATH . _WP_ADMIN_ . '/admin-header.php' );
 
 $form_class = 'media-upload-form type-form validate';
 
@@ -82,4 +82,4 @@ if ( get_user_setting('uploader') || isset( $_GET['browser-uploader'] ) )
 </div>
 
 <?php
-include( ABSPATH . 'wp-admin/admin-footer.php' );
+include( ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );

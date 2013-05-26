@@ -1080,7 +1080,7 @@ function do_robots() {
 	} else {
 		$site_url = parse_url( site_url() );
 		$path = ( !empty( $site_url['path'] ) ) ? $site_url['path'] : '';
-		$output .= "Disallow: $path/wp-admin/\n";
+		$output .= "Disallow: $path/" . _WP_ADMIN_ . "/\n";
 		$output .= "Disallow: $path/wp-includes/\n";
 	}
 
@@ -3134,7 +3134,7 @@ function wp_guess_url() {
 		$url = WP_SITEURL;
 	} else {
 		$schema = is_ssl() ? 'https://' : 'http://'; // set_url_scheme() is not defined yet
-		$url = preg_replace( '#/(wp-admin/.*|wp-login.php)#i', '', $schema . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+		$url = preg_replace( '#/(' . _WP_ADMIN_ . '/.*|wp-login.php)#i', '', $schema . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 	}
 
 	return rtrim($url, '/');

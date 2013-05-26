@@ -57,7 +57,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-include(ABSPATH . 'wp-admin/admin-header.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 ?>
 <div class="wrap">
 <?php screen_icon( 'plugins' ); ?>
@@ -69,4 +69,4 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 <?php do_action('install_plugins_' . $tab, $paged); ?>
 </div>
 <?php
-include(ABSPATH . 'wp-admin/admin-footer.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');

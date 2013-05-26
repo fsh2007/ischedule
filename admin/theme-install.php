@@ -63,7 +63,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-include(ABSPATH . 'wp-admin/admin-header.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-header.php');
 ?>
 <div class="wrap">
 <?php
@@ -83,4 +83,4 @@ $wp_list_table->views(); ?>
 <?php do_action('install_themes_' . $tab, $paged); ?>
 </div>
 <?php
-include(ABSPATH . 'wp-admin/admin-footer.php');
+include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php');

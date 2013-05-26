@@ -1056,13 +1056,13 @@ class Core_Upgrader extends WP_Upgrader {
 			return $working_dir;
 
 		// Copy update-core.php from the new version into place.
-		if ( !$wp_filesystem->copy($working_dir . '/wordpress/wp-admin/includes/update-core.php', $wp_dir . 'wp-admin/includes/update-core.php', true) ) {
+		if ( !$wp_filesystem->copy($working_dir . '/wordpress/wp-admin/includes/update-core.php', $wp_dir . _WP_ADMIN_ . '/includes/update-core.php', true) ) {
 			$wp_filesystem->delete($working_dir, true);
 			return new WP_Error('copy_failed', $this->strings['copy_failed']);
 		}
-		$wp_filesystem->chmod($wp_dir . 'wp-admin/includes/update-core.php', FS_CHMOD_FILE);
+		$wp_filesystem->chmod($wp_dir . _WP_ADMIN_ . '/includes/update-core.php', FS_CHMOD_FILE);
 
-		require(ABSPATH . 'wp-admin/includes/update-core.php');
+		require(ABSPATH . _WP_ADMIN_ . '/includes/update-core.php');
 
 		if ( ! function_exists( 'update_core' ) )
 			return new WP_Error( 'copy_failed_space', $this->strings['copy_failed_space'] );

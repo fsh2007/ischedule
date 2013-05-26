@@ -96,7 +96,7 @@ break;
 
 default:
 
-	require_once( ABSPATH . 'wp-admin/admin-header.php' );
+	require_once( ABSPATH . _WP_ADMIN_ . '/admin-header.php' );
 
 	update_recently_edited( $file );
 
@@ -243,4 +243,4 @@ jQuery(document).ready(function($){
 break;
 }
 
-include(ABSPATH . 'wp-admin/admin-footer.php' );
+include(ABSPATH . _WP_ADMIN_ . '/admin-footer.php' );

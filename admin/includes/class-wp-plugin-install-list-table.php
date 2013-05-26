@@ -14,7 +14,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	}
 
 	function prepare_items() {
-		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+		include( ABSPATH . _WP_ADMIN_ . '/includes/plugin-install.php' );
 
 		global $tabs, $tab, $paged, $type, $term;
 
