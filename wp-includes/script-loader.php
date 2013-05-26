@@ -55,7 +55,7 @@ function wp_default_scripts( &$scripts ) {
 	$scripts->base_url = $guessurl;
 	$scripts->content_url = defined('WP_CONTENT_URL')? WP_CONTENT_URL : '';
 	$scripts->default_version = get_bloginfo( 'version' );
-	$scripts->default_dirs = array('/' _WP_ADMIN_ . '/js/', '/wp-includes/js/');
+	$scripts->default_dirs = array('/' . _WP_ADMIN_ . '/js/', '/wp-includes/js/');
 
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
