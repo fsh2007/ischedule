@@ -238,7 +238,7 @@ class WP {
 			if ( empty($request) || $req_uri == $self || strpos($_SERVER['PHP_SELF'], _WP_ADMIN_ . '/') !== false ) {
 				unset( $error, $_GET['error'] );
 
-				if ( isset($perma_query_vars) && strpos($_SERVER['PHP_SELF'],  '_WP_ADMIN_ . '/') !== false )
+				if ( isset($perma_query_vars) && strpos($_SERVER['PHP_SELF'],  _WP_ADMIN_ . '/') !== false )
 					unset( $perma_query_vars );
 
 				$this->did_permalink = false;
