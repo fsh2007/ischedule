@@ -22,29 +22,29 @@
  * @var array
  */
 
-$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
+//$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
 
-$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
+//$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
 
-if ( is_multisite() ) {
-	$submenu[ 'index.php' ][5] = array( __('My Sites'), 'read', 'my-sites.php' );
-}
+//if ( is_multisite() ) {
+//	$submenu[ 'index.php' ][5] = array( __('My Sites'), 'read', 'my-sites.php' );
+//}
 
-if ( ! is_multisite() || is_super_admin() )
-	$update_data = wp_get_update_data();
+//if ( ! is_multisite() || is_super_admin() )
+//	$update_data = wp_get_update_data();
 
-if ( ! is_multisite() ) {
-	if ( current_user_can( 'update_core' ) )
-		$cap = 'update_core';
-	elseif ( current_user_can( 'update_plugins' ) )
-		$cap = 'update_plugins';
-	else
-		$cap = 'update_themes';
-	$submenu[ 'index.php' ][10] = array( sprintf( __('Updates %s'), "<span class='update-plugins count-{$update_data['counts']['total']}' title='{$update_data['title']}'><span class='update-count'>" . number_format_i18n($update_data['counts']['total']) . "</span></span>" ), $cap, 'update-core.php');
-	unset( $cap );
-}
+//if ( ! is_multisite() ) {
+//	if ( current_user_can( 'update_core' ) )
+//		$cap = 'update_core';
+//	elseif ( current_user_can( 'update_plugins' ) )
+//		$cap = 'update_plugins';
+//	else
+//		$cap = 'update_themes';
+//	$submenu[ 'index.php' ][10] = array( sprintf( __('Updates %s'), "<span class='update-plugins count-{$update_data['counts']['total']}' title='{$update_data['title']}'><span class='update-count'>" . number_format_i18n($update_data['counts']['total']) . "</span></span>" ), $cap, 'update-core.php');
+//	unset( $cap );
+//}
 
-$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
+//$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
 
 
 //$menu[5] = array( __('Posts'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu-top menu-icon-post', 'menu-posts', 'none' );
@@ -200,6 +200,7 @@ if ( current_user_can('list_users') ) {
 		$submenu['profile.php'][10] = array(__('Add New User'), 'promote_users', 'user-new.php');
 }
 
+/*
 $menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-icon-tools', 'menu-tools', 'none' );
 	$submenu['tools.php'][5] = array( __('Available Tools'), 'edit_posts', 'tools.php' );
 	$submenu['tools.php'][10] = array( __('Import'), 'import', 'import.php' );
@@ -208,12 +209,12 @@ $menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-ic
 		$submenu['tools.php'][25] = array( __('Delete Site'), 'manage_options', 'ms-delete-site.php' );
 	if ( ! is_multisite() && defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE )
 		$submenu['tools.php'][50] = array(__('Network Setup'), 'manage_options', 'network.php');
-
+*/
 $menu[80] = array( __('Settings'), 'manage_options', 'options-general.php', '', 'menu-top menu-icon-settings', 'menu-settings', 'none' );
 	$submenu['options-general.php'][10] = array(_x('General', 'settings screen'), 'manage_options', 'options-general.php');
-	$submenu['options-general.php'][15] = array(__('Writing'), 'manage_options', 'options-writing.php');
-	$submenu['options-general.php'][20] = array(__('Reading'), 'manage_options', 'options-reading.php');
-	$submenu['options-general.php'][25] = array(__('Discussion'), 'manage_options', 'options-discussion.php');
+	//$submenu['options-general.php'][15] = array(__('Writing'), 'manage_options', 'options-writing.php');
+	//$submenu['options-general.php'][20] = array(__('Reading'), 'manage_options', 'options-reading.php');
+	//$submenu['options-general.php'][25] = array(__('Discussion'), 'manage_options', 'options-discussion.php');
 	$submenu['options-general.php'][30] = array(__('Media'), 'manage_options', 'options-media.php');
 	$submenu['options-general.php'][40] = array(__('Permalinks'), 'manage_options', 'options-permalink.php');
 
