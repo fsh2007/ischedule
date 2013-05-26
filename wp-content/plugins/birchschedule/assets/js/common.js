@@ -26,6 +26,10 @@ jQuery(function($){
     }
     namespace('birchschedule');
 
+    birchschedule.isMobile = function () {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+    }
+
     birchschedule.changeStateUi = function(countryId, stateId, provinceId){
         var countryEl = $('#' + countryId);
         var stateEl = $('#' + stateId);
@@ -40,14 +44,18 @@ jQuery(function($){
         }
     }
     
-    birchschedule.changeStaffOptions = function(serviceStaffMap, locationStaffMap) {
+    birchschedule.changeStaffOptions = function(serviceStaffMap, locationStaffMap,
+        staffOrder) {
         var staffId = $('#birs_appointment_staff').val();
 
-        var availableStaff = _.pick(serviceStaffMap, _.keys(locationStaffMap));
+        var availableStaff = _.pick( serviceStaffMap, _.keys(locationStaffMap));
         $('#birs_appointment_staff').empty();
-        $.each(availableStaff, function(key, value) {
-            $('#birs_appointment_staff').
-                append($("<option></option>").attr("value", key).text(value));
+        $.each(staffOrder, function(index, key) {
+            if(_(availableStaff).has(key)) {
+                var value = availableStaff[key];
+                $('#birs_appointment_staff').
+                    append($("<option></option>").attr("value", key).text(value));
+            }
         });
         $('#birs_appointment_staff').val(staffId).trigger('change');
     }

@@ -1,54 +1,58 @@
-=== BirchPress Scheduler - Appointment Booking Calendar === 
+=== BirchPress Scheduler - Appointment Booking & Online Scheduling === 
 Contributors: birchpress
-Tags: appointment, appointment booking, appointment booking calendar, appointment calendar, appointment plugin, appointment scheduling calendar, appointments, Booking, Booking calendar, calendar, scheduling, scheduling plugin, wordpress appointment plugin, wordpress booking, scheduler
+Tags: appointment, appointment booking, appointment booking calendar, appointment calendar, appointment scheduling, book appointment, booking calendar, scheduling, booking form, reservation, online scheduling
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.4.3
+Stable tag: 1.5.5.2
 
-BirchPress Scheduler is an appointment booking calendar that allows service businesses to take online bookings.
+BirchPress Scheduler is an appointment booking and online scheduling plugin that allows service businesses to take online bookings.
 
 == Description ==
 
-BirchPress Scheduler is an appointment booking calendar that allows service businesses such as spas, yoga studios, contractors and photographers to take online bookings. Merchants can embed a booking form in a page or post on the website, and customers can see service availability and book an appointment online directly. It is an effective tool to manage appointments and staffing schedules.
+BirchPress Scheduler is an appointment booking and online scheduling plugin that allows service businesses such as spas, yoga studios, contractors and photographers to take online appointment bookings. Merchants can embed a booking form in a page or post on the website, and customers can see service availability and book an appointment online directly. It is an effective tool to manage appointments and staffing schedules.
 
-= Feature: =
-* Customer booking for specific time in a day
+= Features: =
+* Customer booking appointments for specific time in a day
+* Optimize the booking form for responsive themes
 * Support multiple locations
 * Support multiple staff and services
-* Config service length, padding time and price
+* Configure service length, padding time and price
 * Assign your employees to different services
-* Powerful Admin Panel for booking management
-* Easily embed booking form into a webpage with shortcode
-* Show appointments in the daily, weekly or monthly view
+* Powerful Admin Panel for booking / appointment management
+* Easily embed booking form / calendar into a webpage with shortcode
+* Show appointments / schedules in the daily, weekly or monthly view
+* Easily add, edit or delete appointment in WP Admin
 * Client Management
 * Multiple-currency support
-* Config date and time format
+* Configure date and time format
 * Set the first day of the week
-* Supported languages: English, Dutch(by Edwin ten Brink), German (by Edwin ten Brink), Spanish (by Juan Viñas)
+* Track appointment payment history
+* Supported languages: English, Dutch(by Edwin ten Brink), German (by Edwin ten Brink), Spanish (by Juan Viñas), Hungary(Ferenc Sarosi), French(Jennifer ANSELME)
 
 = Desired Businesses =
 * Client scheduling (Beauty salon, Spa management, Hairdresser, Massage therapist, Acupuncture, Photographers,Personal Trainers, Wellness, Training Institutes, Sightseeing Services, Home Repair, Auto Repair, Tuition, Financial Services)
 * Meeting scheduling (Coaching, Phone advice, Consulting, Law Firms, Education)
 * Patient scheduling (Doctor, Clinic, Medical)
 
-
-= Extra features supported in BirchPress Scheduler Pro = 
-* Autofill info for existing customers in admin
-* Automated Email notifications to staff and clients
-* Custom email messages 
-* Display staff appointments in different colors 
-* Custom booking form based on business needs(add custom fields, visible/invisible to admin and customers, required/not required)
+= Extra features supported in BirchPress Scheduler Pro =
+* Auto fill info for existing customers in admin
+* Email notifications to staff and clients when your client books an appointment
+* Custom email messages with booking / appointment details
+* Display staff appointments/bookings in different colors
+* Custom booking form based on business needs(add custom fields about appointment or customer info, visible/invisible to admin and customers, required/not required)
 * Block busy time and holidays
-* Page redirection after booking
-* Returning user booking with email and password
+* Page redirection after booking an appointment
+* Returning user booking an appointment with email and password
 * WP user integration
 * Support minimum time requirement prior to booking
 * Set how far in advance an appointment can be booked
-* Set the length of time slot
-* Set booking availability for a specific time period
-* and much more comming soon
+* Set the length of time slot for each service
+* Set booking availability/schedule for a specific time period
+* Calendar Sync (iCal)
+* Prepayment and PayPal Integration
+* and much more coming soon
 
-Please visit [our website](http://www.birchpress.com "WordPress Appointment Booking Calendar") for more info, or try our online [demo](http://www.birchpress.com/demo/ "BirchPress Scheduler Pro Demo") with all features.
+Please visit [our website](http://www.birchpress.com "WordPress Appointment Booking Calendar") for more info, or try our online appointment booking [demo](http://www.birchpress.com/demo/ "BirchPress Scheduler Pro Demo") with all features.
 
 == Installation ==
 
@@ -57,16 +61,17 @@ Please visit [our website](http://www.birchpress.com "WordPress Appointment Book
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
 == Screenshots ==
-1. Frontend booking form
-2. Admin calendar view
-3. New appointment from admin
-4. Multiple locations
-5. Staff info
-6. Staff work schedule
-7. Service info
-8. Service settings
-9. Client info
-10. Currency and other settings
+1. Frontend booking form with a responsive theme
+2. Frontend booking form on Laptop
+3. Admin calendar view
+4. New appointment from admin
+5. Multiple locations
+6. Staff info
+7. Staff work schedule
+8. Service info
+9. Service settings
+10. Client info
+11. Currency and other settings
 
 == Frequently Asked Questions ==
 
@@ -76,6 +81,27 @@ To embed the booking form into a post/page, just insert the following shortcode:
 [bp-scheduler-bookingform]
 
 == Changelog ==
+= 1.5.5.2 =
+* Bug Fix: The location field are shown again when there is only one option. This bug is introduced in 1.5.5.1.
+
+= 1.5.5.1 =
+* Bug Fix: Some plugins or themes replace line breaks with <br> tags in the shortcode, which messes up the booking form.
+
+= 1.5.5 =
+* Enhancement: Optimize the booking form for responsive themes.
+* Enhancement: Support French.
+* Enhancement: Hide the service field in the booking form when there is only one option.
+* Enhancement: Hide the service provider field in the booking form when there is only one option.
+
+= 1.5.1 =
+* Enhancement: Admin can select existing clients when adding appointments.
+* Enhancement: Add payment histroy tracking
+* Enhancement: Redesign the booking form to improve usability.
+* Enhancement: Admin can change the duration of the appointment.
+* Enhancement: Hide location when there is only one.
+
+= 1.4.3.3 =
+* Update select2 lib to make the booking form compatible to some themes.
 
 = 1.4.3 =
 * Update translation files

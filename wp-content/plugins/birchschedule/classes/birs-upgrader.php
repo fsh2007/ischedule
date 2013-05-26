@@ -4,6 +4,8 @@ class BIRS_Upgrader {
 
     function __construct() {
         $this->util = BIRS_Util::get_instance();
+        add_action('birchschedule_upgrade_db_core',
+            array($this, 'upgrade_core'));
     }
     
     function get_staff_all_schedule_1_0($staff) {
@@ -80,10 +82,25 @@ class BIRS_Upgrader {
         return get_option('birs_staff_schedule_version', '1.0');
     }
     
-    function upgrade() {
+    function upgrade_core() {
         $this->upgrade_staff_schedule_from_1_0_to_1_1();
     }
+    
+    function upgrade() {
+        $modules = $this->get_module_names();
+        foreach($modules as $module) {
+            do_action('birchschedule_upgrade_db_' . $module);
+        }
+    }
 
+    function get_module_names() {
+        global $birchschedule;
+        $addons = $birchschedule->addons;
+        $modules = array_keys($addons);
+        $modules[] = 'core';
+        return $modules;
+    }
+    
     function get_util() {
         return $this->util;
     }

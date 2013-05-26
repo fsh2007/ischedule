@@ -3,7 +3,6 @@ jQuery(function($){
     var ajaxUrl = params.ajax_url;
     var allSchedule = params.all_schedule;
     var servicePriceMap = params.service_price_map;
-    var serviceMap = params.service_map;
     var serverGmtOffset = params.gmt_offset;
     var allDayoffs = params.all_dayoffs;
     
@@ -11,51 +10,28 @@ jQuery(function($){
         return birchschedule.getServerNow(serverGmtOffset);
     }
     
-    function changeStaffOptions() {
-        var locationId = $('#birs_appointment_location').val();
-    	var clientTypeId = $('#birs_appointment_client_type').val();
-    	var serviceId = 0;
-        var serviceStaffMap = null;
-        var locationStaffMap = params.location_staff_map[locationId];
-        
-        $("input[name='birs_appointment_service[]']").each(function(e){
-        	if( $(this).attr('checked') ){
-        		serviceId = $(this).val();
-        		serviceStaffMap = params.service_staff_map[serviceId];
-                birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap);
-        	}
-        });
-    }
-
-    function changeAppointmentPrice() {
+    function changeServiceOptions() {
         var serviceId = $('#birs_appointment_service').val();
-        $('#birs_appointment_price').val(servicePriceMap[serviceId].price);
+        var locationId = $('#birs_appointment_location').val();
+        var avaliableServices = params.location_service_map[locationId];
+        $('#birs_appointment_service').empty();
+        $.each(params.service_order, function(index, key) {
+            if(_(avaliableServices).has(key)) {
+                var value = avaliableServices[key];
+                $('#birs_appointment_service').
+                    append($("<option></option>").attr("value", key).text(value));
+            }
+        });
+        $('#birs_appointment_service').val(serviceId).trigger('change');
     }
     
-    function changeServiceOptions() {
-        var clientTypeId = $('#birs_appointment_client_type').val();
-        $('#birs_appointment_service_div').html('');
-        var services = params.service_map[clientTypeId];
-        var htmlStr = "";
-        var idv = "birs_appointment_service_";
-        var seperator = "-";
-        $.each(services, function(key, values){
-        	idv = idv + clientTypeId + "_" + key;
-        	if(values['service_price_type'] == 'dont-show'){
-        		seperator = "";
-        	}
-        	
-        	htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
-        	htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
-        	htmlStr = htmlStr + "<br/>";
-            $('#birs_appointment_service_div').append(htmlStr);
-            
-            $('#' + idv).on('click', function(){
-            	changeStaffOptions();
-            	return true;
-            });
-        });
-        
+    function changeStaffOptions() {
+        var serviceId = $('#birs_appointment_service').val();
+        var locationId = $('#birs_appointment_location').val();
+        var serviceStaffMap = params.service_staff_map[serviceId];
+        var locationStaffMap = params.location_staff_map[locationId];
+        birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap, 
+            params.staff_order);
     }
 
     function getTimeOptions(){
@@ -74,7 +50,19 @@ jQuery(function($){
             });
         }, 'html');
     }
-
+    function changeAppointmentPrice() {
+        var serviceId = $('#birs_appointment_service').val();
+        if(serviceId) {
+            $('#birs_appointment_price').val(servicePriceMap[serviceId].price);
+        }
+    }
+    function changeAppointmentDuration() {
+        var serviceDurationMap = params.service_duration_map;
+        var serviceId = $('#birs_appointment_service').val();
+        if(serviceId) {
+            $('#birs_appointment_duration').val(serviceDurationMap[serviceId].duration);
+        }
+    }
     function isDayAvaliableByBookingPreferences(date, futureTime, cutOffTime) {
         var serverNow = getServerNow();
         var timeOfServer = serverNow.getTime();
@@ -118,6 +106,8 @@ jQuery(function($){
     }
     function showDatepicker() {
         var options = $.extend(params.datepicker_i18n_options, {
+            changeMonth: false,
+            changeYear: false,
             'dateFormat': 'mm/dd/yy',
             beforeShowDay: function(date){
                 var serverNow = getServerNow();
@@ -155,35 +145,39 @@ jQuery(function($){
         $('#birs_appointment_time').val('');
         $('#birs_appointment_date').val('');
     }
-
-    $('#birs_appointment_service_div').html('Choose the Client Type at first!');
+    function scrollTo(selector, duration) {
+        if(!duration) {
+            duration = 600;
+        }
+        $('html, body').animate({
+             scrollTop: $(selector).offset().top
+        }, duration);
+    }
     
     //start execute functions
-    $('#birs_appointment_location').select2({
-        width: '50%'
-    });
-    $('#birs_appointment_client_type').select2({
-        width: '50%',
-    });
-    $('#birs_appointment_staff').select2({
-        width: '50%'
-    });
-    //changeStaffOptions();    
-    //changeAppointmentPrice();
+    if(!birchschedule.isMobile()) {
+        var serviceWidth = "resolve";
+        $('#birs_appointment_form select').select2({
+            width: serviceWidth
+        });
+    }
     changeServiceOptions();
+    changeStaffOptions();    
+    changeAppointmentPrice();
+    changeAppointmentDuration();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
-    $('#birs_appointment_client_type').on('change', function(){
+    $('#birs_appointment_location').on('change', function(){
         changeServiceOptions();
+        changeStaffOptions();
+        changeAppointmentPrice();
+        changeAppointmentDuration();
         refreshDatetime();
     });
     $('#birs_appointment_service').on('change', function(){
         changeStaffOptions();
-        //changeAppointmentPrice();
-        refreshDatetime();
-    });
-    $('#birs_appointment_location').on('change', function(){
-        changeStaffOptions();
+        changeAppointmentPrice();
+        changeAppointmentDuration();
         refreshDatetime();
     });
     $('#birs_appointment_staff').on('change', function(){
@@ -195,16 +189,17 @@ jQuery(function($){
             action: 'birs_save_appointment_frontend'
         });
         $.post(ajaxUrl, postData, function(data, status, xhr){
-            $('#birs_please_wait').hide();
             data = '<div>' + data + '</div>';
             var doc = $(data).find('#birs_response');
             if(doc.find('#birs_success').length > 0){
+                $('#birs_please_wait').hide("slow");
                 if(doc.find('#birs_success_text').length > 0) {
-                    $('.birs_error').hide();
+                    $('.birs_error').hide("");
                     $('#birs_booking_box').hide();
                     $('#birs_booking_success').html(doc.find('#birs_success_text').html());
-                    $('#birs_booking_success').show();
-                    window.location.hash = '#birs_booking_success';
+                    $('#birs_booking_success').show("slow", function() {
+                        scrollTo("#birs_booking_success", 10);
+                    });
                     return;
                 }
                 if(doc.find('#birs_success_redirect').length > 0) {
@@ -216,13 +211,18 @@ jQuery(function($){
                 doc.find('#birs_errors p').each(function(idx, elt){
                     var tagId = $(elt).attr('id') + '_error';
                     $('#' + tagId).html($(elt).text());
-                    $('#' + tagId).show();
+                    $('#' + tagId).show("slow");
+                });
+                $('#birs_please_wait').hide("slow", function() {
+                    scrollTo($(".birs_error:visible:first").
+                        parentsUntil("#birs_appointment_form",
+                            ".birs_form_field"));
                 });
                 return;
             }
         }, 'text');
-        $('.birs_error').hide();
-        $('#birs_please_wait').show();
+        $('.birs_error').hide("slow");
+        $('#birs_please_wait').show("slow");
     });
 
 });

@@ -5,6 +5,10 @@ class BIRS_Merge_Fields {
 
     function __construct() {
         $this->util = BIRS_Util::get_instance();
+        add_filter('birchschedule_get_appointment_merge_fields_values',
+            array($this, 'get_appointment_merge_fields_values'), 20, 2);
+        add_filter('birchschedule_replace_merge_fields', 
+            array($this, 'replace_merge_fields'), 10, 2);
     }
 
     function get_merge_field_map() {
@@ -20,6 +24,7 @@ class BIRS_Merge_Fields {
             'datetime' => '_birs_appointment_datetime',
             'client_first_name' => '_birs_client_name_first',
             'client_last_name' => '_birs_client_name_last',
+            'deposit' => '_birs_appointment_pre_payment_fee_with_currency',
             'admin_email' => 'admin_email',
             'site_title' => 'site_title'
         ); 
@@ -28,6 +33,10 @@ class BIRS_Merge_Fields {
     
     function convert_to_datetime($timestamp) {
         return $this->util->convert_to_datetime($timestamp);
+    }
+    
+    function get_appointment_merge_fields_values($appointment, $post_id) {
+        return $this->get_appointment($post_id);
     }
     
     function get_appointment($post_id) {
@@ -44,6 +53,11 @@ class BIRS_Merge_Fields {
         $appointment->load();
         $timestamp = $appointment->_birs_appointment_timestamp;
         $appointment['_birs_appointment_datetime'] = $this->convert_to_datetime($timestamp);
+        $appointment['_birs_appointment_pre_payment_fee'] = 
+            $appointment->get_appointment_pre_payment_fee();
+        $appointment['_birs_appointment_pre_payment_fee_with_currency'] = 
+            apply_filters('birchschedule_price', 
+                $appointment['_birs_appointment_pre_payment_fee']);
         $client_id = $appointment->_birs_appointment_client;
         $client = $this->get_client($client_id);
         $staff_id = $appointment->_birs_appointment_staff;

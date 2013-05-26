@@ -1,4 +1,4 @@
-div#submitdiv #minor-publishing{
+#submitdiv #minor-publishing{
 }
 
 .birchschedule .form-field input[type="text"] {
@@ -90,19 +90,16 @@ div#submitdiv #minor-publishing{
 }
 
 /* services view */
-.birchschedule #birs_service_length_1, #birs_service_length_0, #birs_service_length_2,
+.birchschedule #birs_service_length, 
 .birchschedule #birs_service_padding,
 .birchschedule #birs_service_price {
     width: 20%;
 }
 
-div#birchschedule-staff-services input,
-div#birchschedule-service-staff input{
+#birchschedule-staff-services input,
+#birchschedule-service-staff input, 
+#birchschedule-service-locations input {
     margin-right: 4px;
-}
-
-.birchschedule .client_type{
-	width:100px;
 }
 
 /* calendar view */
@@ -110,12 +107,16 @@ div#birchschedule-service-staff input{
     width: 100%;
 }
 
-.select2-drop {
+.select2-drop, .select2-search {
     z-index: 100003;
 }
 
-#birs_calendar_title {
-    float: left;
+.select2-drop-mask {
+    z-index: 100002;
+}
+
+#birs_calendar_toolbar {
+    margin-bottom: 8px;
 }
 
 #birs_calendar_filter {
@@ -155,45 +156,53 @@ div#birchschedule-service-staff input{
     margin-bottom: 0;
 }
 
-input#birs_appointment_price {
-    width: 80px;
-}
-
-input#birs_date_start {
-    width: 120px;
-}
-
-#birs_appointment_edit th {
-    text-align: right;
-}
-
-#birs_appointment_edit td textArea {
-    width: 280px;
-    height: 50px;
-}
-
-#birs_appointment_edit #birs_client_details input[type="text"] {
-    width: 240px;
-}
-
 #birs_appointment_edit .splitter {
     border-top: 1px #DFDFDF solid;
-    margin: 8px;
+    margin-bottom: 12px;
 }
 
-#birs_appointment_edit th {
-    vertical-align: top;
+#birs_appointment_edit .birs_error {
+    display: none;
+    color: red;
+}
+
+#birs_appointment_edit .ui-tabs-panel > ul {
+    margin-top: 0;
+}
+
+#birs_appointment_edit .ui-tabs-panel .birs_form_field {
+    overflow: hidden;
+}
+
+#birs_appointment_edit .ui-tabs-panel .birs_form_field > label {
+    font-weight: bold;
+    float: left;
+    text-align: left;
+    width: 25%;
     padding-top: 2px;
 }
 
-
-#birs_appointment_edit tr.error th, #birs_appointment_edit tr.error td {
-    padding: 0;
+#birs_appointment_edit .ui-tabs-panel .birs_field_content {
+    float: left;
+    width: 74%;
 }
 
-#birs_appointment_edit label.error {
-    display: none;
-    color: red;
+#birs_appointment_edit .ui-tabs-panel .birs_field_content textarea {
+    width: 95%;
+}
+
+#birs_appointment_edit .ui-tabs-panel .birs_field_content input[type="text"],
+#birs_appointment_edit .ui-tabs-panel .birs_field_content select {
+    width: 80%;    
+}
+
+#birs_appointment_edit .row-actions {
+    visibility: visible;
+}
+
+#birs_appointment_edit .ui-tabs-panel .birs_field_content .birs_money {
+    display: inline-block;
+    margin: 2px 0 2px 6px;
 }
 
 .ui-dialog-titlebar .submitbox a {

@@ -78,6 +78,12 @@ class BIRS_Admin_View {
         }
     }
 
+    function save_field_float($post_id, $field_name) {
+        if (isset($_POST[$field_name])) {
+            $value = floatval($_POST[$field_name]);
+            update_post_meta($post_id, '_' . $field_name, $value);
+        }
+    }
 }
 
 ?>

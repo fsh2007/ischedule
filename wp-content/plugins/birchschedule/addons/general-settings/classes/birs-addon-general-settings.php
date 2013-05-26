@@ -2,27 +2,23 @@
 
 class BIRS_Addon_General_Settings extends BIRS_Addon {
     
-    var $default_options;
     var $update_info = array();
+    var $upgrader;
 
     function __construct() {
         parent::__construct();
         add_action('init', array($this, 'init'));
         add_action('admin_init', array($this, 'admin_init'));
         add_filter('birchschedule_settings_tabs', array(&$this, 'add_tab'));
-        add_filter('birchschedule_price_label', array($this, 'add_currency_symbol'));
-        add_filter('birchschedule_price', array($this, 'add_currency_symbol'));
+        add_filter('birchschedule_price_label', array($this, 'add_currency_symbol_label'));
+        add_filter('birchschedule_price', array($this, 'add_system_currency_symbol'));
+        add_filter('birchschedule_add_currency_symbol',
+            array($this, 'add_currency_symbol'), 10, 2);
+        add_filter('birchschedule_currency_code', array($this, 'get_option_currency'));
         add_filter('birchschedule_default_calendar_view', array($this, 'get_option_default_calendar_view'));
         add_action('birchschedule_show_update_notice', array($this, 'show_update_notice'));
         add_filter('site_transient_update_plugins', array($this, 'get_update_info'), 20);
-        $this->init_constants();
-    }
-    
-    function init_constants() {
-        $this->default_options = array(
-            'currency' => 'USD',
-            'default_calendar_view' => 'agendaWeek'
-        );
+        $this->upgrader = new BIRS_Addon_General_Settings_Upgrader($this);
     }
     
     function get_addon_dir_name() {
@@ -30,8 +26,6 @@ class BIRS_Addon_General_Settings extends BIRS_Addon {
     }
     
     function init() {
-        do_action('birchschedule_upgrade_birchschedule_options');
-        $this->get_options();
         add_filter('birchschedule_first_day_of_week', array($this, 'get_first_day_of_week'));
     }
     
@@ -60,7 +54,28 @@ class BIRS_Addon_General_Settings extends BIRS_Addon {
         return $tabs;
     }
 
-    function add_currency_symbol($arg) {
+    function add_system_currency_symbol($arg) {
+        $currency = $this->get_option_currency();
+        return $this->add_currency_symbol($arg, $currency);
+    }
+
+    function add_currency_symbol($arg, $currency) {
+        $currencies = $this->util->get_currencies();
+        $currency = $currencies[$currency];
+        $symbol = $currency['symbol_right'];
+        if ($symbol == '') {
+            $symbol = $currency['symbol_left'];
+        }
+        if ($currency['symbol_right']) {
+            $arg .= $symbol;
+        } else {
+            $arg = $symbol . $arg;
+        }
+
+        return $arg;
+    }
+
+    function add_currency_symbol_label($arg) {
         $currencies = $this->util->get_currencies();
         $currency = $this->get_option_currency();
         $currency = $currencies[$currency];
@@ -68,17 +83,7 @@ class BIRS_Addon_General_Settings extends BIRS_Addon {
         if ($symbol == '') {
             $symbol = $currency['symbol_left'];
         }
-        if (is_numeric($arg)) {
-            if ($currency['symbol_right']) {
-                $arg .= $symbol;
-            } else {
-                $arg = $symbol . $arg;
-            }
-        } else {
-            $arg = $arg . ' (' . $symbol . ')';
-        }
-
-        return $arg;
+        return $arg = $arg . ' (' . $symbol . ')';
     }
 
     function get_option_currency() {
@@ -97,10 +102,6 @@ class BIRS_Addon_General_Settings extends BIRS_Addon {
     
     function get_options() {
         $options = get_option('birchschedule_options');
-        if($options === false) {
-            add_option('birchschedule_options', apply_filters(
-                'birchschedule_options_default', $this->default_options));
-        }
         return $options;
     }
 

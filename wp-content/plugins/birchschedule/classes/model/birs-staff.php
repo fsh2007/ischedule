@@ -78,6 +78,16 @@ class BIRS_Staff extends BIRS_Model {
         return $schedule;
     }
     
+    public function get_calendar_import_urls() {
+        if($this['_birs_staff_calendar_import_urls']) {
+            $calendar_import_urls = 
+                unserialize($this['_birs_staff_calendar_import_urls']);
+        } else {
+            $calendar_import_urls = array();
+        }
+        return $calendar_import_urls;
+    }
+    
     private function get_avaliable_schedules_by_date($schedules, $date) {
         $util = BIRS_Util::get_instance();
         $new_schedules = array();

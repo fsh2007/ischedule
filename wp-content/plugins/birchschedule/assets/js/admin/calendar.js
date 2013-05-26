@@ -7,6 +7,7 @@ jQuery(function($){
     var locationStaffMap = params.location_staff_map;
     var fcTimeFormat = params.fc_time_format;
     var i18n = params.i18n;
+    var staffOrder = params.staff_order;
     
     var showMessage = birchschedule.showMessage;
     function changeStaffOptions() {
@@ -16,8 +17,11 @@ jQuery(function($){
         if(!assignedStaff){
             assignedStaff = {};
         }
-        $.each(assignedStaff, function(key, value){
-            html += '<option value="' + key + '">' + value + '</option>';                            
+        $.each(staffOrder, function(index, key){
+            if(_(assignedStaff).has(key)) {
+                var value = assignedStaff[key];
+                html += '<option value="' + key + '">' + value + '</option>';                            
+            }
         });
         $('#birs_calendar_staff').html(html);
     };
@@ -82,18 +86,21 @@ jQuery(function($){
         disableDragging: true,
         disableResizing: true,
         selectable: false,
-        allDaySlot: false,
+        allDaySlot: true,
         slotMinutes: 15,
         firstHour: 9,
         timeFormat: fcTimeFormat,
         axisFormat: fcTimeFormat,
         dayClick: function(date, allDay, jsEvent, view){
-            if(view.name === 'month' || view.name === 'agendaWeek') {
+            if(view.name === 'month') {
                 calendar.fullCalendar('changeView', 'agendaDay');
                 calendar.fullCalendar('gotoDate', date);
             }
         },
         eventClick: function(calEvent, jsEvent, view){
+            if(!calEvent.editable) {
+                return;
+            }
             var dialog = $('#birs_add_new_dialog');
             dialog.data('appointmentId', calEvent.id);
             openEditDialog(editAppointmentTitle);

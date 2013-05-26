@@ -78,7 +78,7 @@ class BIRS_Util {
         $date_format = get_option( 'date_format' );
         $time_format = get_option( 'time_format' );
         $datetime = $this->get_wp_datetime($timestamp);
-        return $datetime->format($date_format) . ' ' . $datetime->format($time_format);
+        return date_i18n($date_format, $timestamp) . ' ' . $datetime->format($time_format);
     }
 
     function get_wp_timezone() {
@@ -555,12 +555,6 @@ class BIRS_Util {
             'Dr' => __('Dr', 'birchschedule'));
     }
     
-    function get_client_type_options(){
-    	return array('0' => __('Female', 'birchschedule'),
-    			    '1' => __('Male', 'birchschedule'),
-    			    '2' => __('Child', 'birchschedule'));
-    }
-    
     function get_gmt_offset() {
         return -round($this->get_wp_datetime(time())->getOffset() / 60);
     }
@@ -627,6 +621,12 @@ class BIRS_Util {
                 __('Thu', 'birchschedule'), 
                 __('Fri', 'birchschedule'),
                 __('Sat', 'birchschedule')
+            ),
+            'buttonText' => array(
+                'today' => __('today', 'birchschedule'),
+                'month' => __('month', 'birchschedule'),
+                'week' => __('week', 'birchschedule'),
+                'day' => __('day', 'birchschedule')
             )
         );
     }
@@ -705,6 +705,20 @@ class BIRS_Util {
         }
     
         return (substr($haystack, -$length) === $needle);
+    }
+
+    function current_page_url() {
+         $pageURL = 'http';
+         if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
+         	$pageURL .= "s";
+         }
+         $pageURL .= "://";
+         if ($_SERVER["SERVER_PORT"] != "80") {
+            $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+         } else {
+            $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+         }
+         return $pageURL;
     }
 
     public function log() {

@@ -4,18 +4,29 @@ class BIRS_Help_View extends BIRS_Admin_View {
 
     function __construct() {
         parent::__construct();
+        add_filter('birchschedule_get_wp_screen', array($this, 'get_screen'), 10, 2);
     }
 
     function admin_init() {
         parent::admin_init();
-        add_meta_box('birs_help_general', __('Help and Support', 'birchschedule'), array($this, 'render_help_general'), $this->get_page_hook_suffix(), 'main', 'default');
-        add_meta_box('birs_help_version', __('Versions', 'birchschedule'), array($this, 'render_help_version'), $this->get_page_hook_suffix(), 'main', 'default');
+        $screen = apply_filters('birchschedule_get_wp_screen', 
+            null, $this->get_page_hook_suffix());
+        add_meta_box('birs_help_general', __('Help and Support', 'birchschedule'), 
+            array($this, 'render_help_general'), 
+            $screen, 'main', 'default');
+        add_meta_box('birs_help_version', __('Versions', 'birchschedule'), 
+            array($this, 'render_help_version'), 
+            $screen, 'main', 'default');
     }
 
     function get_page_hook_suffix() {
-        global $birchschedule;
-        $help_view = $birchschedule->help_view;
-        return $help_view->page_hook;
+        return "birchschedule_page_help";
+    }
+
+    function get_screen($screen, $hook_name) {
+        $page_hook = $hook_name . '.php';
+        $screen = WP_Screen::get($page_hook);
+        return $screen;
     }
 
     function render_help_version() {
@@ -60,6 +71,8 @@ class BIRS_Help_View extends BIRS_Admin_View {
     }
 
     function render_admin_page() {
+        $screen = apply_filters('birchschedule_get_wp_screen', 
+            null, $this->get_page_hook_suffix());
         do_action('birchschedule_show_update_notice');
         ?>
         <div id="birchschedule_email_notification" class="wrap">
@@ -68,7 +81,7 @@ class BIRS_Help_View extends BIRS_Admin_View {
                 <div id="poststuff">
                     <div id="post-body" class="metabox-holder columns-1">
                         <div id="postbox-container-1" class="postbox-container">
-                            <?php do_meta_boxes($this->get_page_hook_suffix(), 'main', array()) ?>
+                            <?php do_meta_boxes($screen, 'main', array()) ?>
                         </div>
                     </div>
                     <br class="clear" />

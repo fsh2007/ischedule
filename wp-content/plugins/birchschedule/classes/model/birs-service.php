@@ -49,6 +49,23 @@ class BIRS_Service extends BIRS_Model {
         
     }
 
+    public function get_pre_payment_fee() {
+        $service_pre_payment_fee = unserialize($this['_birs_service_pre_payment_fee']);
+        if($service_pre_payment_fee) {
+            if($service_pre_payment_fee['pre_payment_type'] == 'fixed') {
+                return floatval($service_pre_payment_fee['fixed']);
+            }
+            else if($service_pre_payment_fee['pre_payment_type'] == 'percent') {
+                return $service_pre_payment_fee['percent'] * 
+                    $this['_birs_service_price'] * 0.01;
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
+
 }
 
 ?>

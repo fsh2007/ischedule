@@ -66,7 +66,7 @@ abstract class BIRS_Content_View extends BIRS_Admin_View {
     }
 
     function handle_errors() {
-        if ($this->process_errors) {
+        if (isset($this->process_errors)) {
             update_option('birchschedule_errors', $this->process_errors);
         }
     }
