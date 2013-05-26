@@ -36,6 +36,7 @@ function wp_dashboard_setup() {
 	}
 
 	// Right Now
+	/*
 	if ( is_blog_admin() && current_user_can('edit_posts') )
 		wp_add_dashboard_widget( 'dashboard_right_now', __( 'Right Now' ), 'wp_dashboard_right_now' );
 
@@ -95,6 +96,7 @@ function wp_dashboard_setup() {
 			'show_date' => 1,
 		);
 	}
+	*/
 	wp_add_dashboard_widget( 'dashboard_primary', $widget_options['dashboard_primary']['title'], 'wp_dashboard_primary', 'wp_dashboard_primary_control' );
 
 	// Secondary Feed (Planet) Widget
