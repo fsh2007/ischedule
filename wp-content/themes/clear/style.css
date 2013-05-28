@@ -151,7 +151,7 @@ sub {
 
 #logo #h1{
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
-	font-size: 100%;
+	font-size: 35px;
 	
 }
 #logo #h2 {
@@ -159,6 +159,7 @@ sub {
 	color: #515151;
     display: inline-block;
 	padding:5px 10px 10px 10px;
+	font-size:16px;
 }
 
 #logo #h1 a {
