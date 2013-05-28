@@ -449,6 +449,14 @@ class BIRS_Shortcode {
                 </select>
             </div>
         </li>
+        <li class="birs_form_field">
+            <label><?php _e('Client Type', 'birchschedule'); ?></label>
+            <div>
+                <select id="birs_appointment_client_type" name="birs_appointment_client_type">
+                    <?php $client_type = $this->render_client_type_options(0); ?>
+                </select>
+            </div>
+        </li>
         <li class="birs_form_field <?php echo $hide_service_class; ?>">
             <label><?php _e('Service', 'birchschedule'); ?></label>
             <div class="birs_field_content">
