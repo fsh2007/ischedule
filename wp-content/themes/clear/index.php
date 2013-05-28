@@ -5,12 +5,6 @@
 	        <div class="post" id="post-<?php the_ID(); ?>">
             <h2 class="title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
         <div class="meta">
-		<p>              
-                <?php the_time('M') ?>
-                <?php the_time('d') ?>
-                <?php the_time('Y') ?>
-
-               <?php edit_post_link(); ?></p>
 	</div>
 	<div class="entry">
               <?php the_content(__('Continue Reading &#187;')); ?>
