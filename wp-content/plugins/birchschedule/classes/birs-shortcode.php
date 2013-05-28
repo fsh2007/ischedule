@@ -286,6 +286,17 @@ class BIRS_Shortcode {
             return key($services);
         }
     }
+    
+    function render_client_type_options($selection){
+    	$util = $this->get_util();
+    	$options = $util->get_client_type_options();
+    	$util->render_html_options($options, $select, '0');
+    	if ($selection) {
+    		return $selection;
+    	} else {
+    		return key($options);
+    	}
+    }    
 
     function get_service_option_text($text, $service) {
         $length = $service->get_service_length();
