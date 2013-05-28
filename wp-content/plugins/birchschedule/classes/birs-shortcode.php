@@ -261,6 +261,7 @@ class BIRS_Shortcode {
                         array(
                             'meta_keys' => array(
                                 '_birs_service_length', '_birs_service_length_type',
+								'_birs_service_client_type_length',
                                 '_birs_service_price', '_birs_service_price_type'
                             ),
                             'base_keys' => array(
