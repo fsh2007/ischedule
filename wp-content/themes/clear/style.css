@@ -151,7 +151,7 @@ sub {
 
 #logo #h1{
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
-	font-size: 4em;
+	font-size: 100%;
 	
 }
 #logo #h2 {
