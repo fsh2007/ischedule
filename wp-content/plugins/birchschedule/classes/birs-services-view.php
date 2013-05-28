@@ -87,8 +87,14 @@ class BIRS_Services_View extends BIRS_Content_View {
     }
 
     function process_content($post_id, $post) {
-        $this->save_field_int($post_id, 'birs_service_length');
-        $this->save_field_string($post_id, 'birs_service_length_type');
+    	$this->save_field_int($post_id, 'birs_service_length_0');
+    	$this->save_field_string($post_id, 'birs_service_length_type_0');
+    	$this->save_field_int($post_id, 'birs_service_length_1');
+    	$this->save_field_string($post_id, 'birs_service_length_type_1');
+    	$this->save_field_int($post_id, 'birs_service_length_2');
+    	$this->save_field_string($post_id, 'birs_service_length_type_2');    	
+        //$this->save_field_int($post_id, 'birs_service_length');
+        //$this->save_field_string($post_id, 'birs_service_length_type');
         $this->save_field_int($post_id, 'birs_service_padding');
         $this->save_field_string($post_id, 'birs_service_padding_type');
         $this->save_field_float($post_id, 'birs_service_price');
@@ -126,11 +132,21 @@ class BIRS_Services_View extends BIRS_Content_View {
                 <tr class="form-field">
                     <th><label><?php _e('Length', 'birchschedule'); ?> </label>
                     </th>
-                    <td><input type="text" name="birs_service_length"
-                               id="birs_service_length" value="<?php echo $length; ?>"> <select
-                               name="birs_service_length_type">
-                                   <?php $this->render_select_options($this->length_types, $length_type); ?>
-                        </select>
+                    <td>
+                    <span class="client_type"><?php _e('Female', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_0" id="birs_service_length_0" value="<?php echo $length_0; ?>"> 
+                    <select name="birs_service_length_type_0">
+                    <?php $this->render_select_options($this->length_types, $length_type_0); ?>
+                    </select>
+                    <br/>
+                    <span class="client_type"><?php _e('Male', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_1" id="birs_service_length_1" value="<?php echo $length_1; ?>"> 
+                    <select name="birs_service_length_type_1">
+                    <?php $this->render_select_options($this->length_types, $length_type_1); ?>
+                    </select>
+                    <br/>
+                    <span class="client_type"><?php _e('Child', 'birchschedule'); ?> : </span><input type="text" name="birs_service_length_2" id="birs_service_length_2" value="<?php echo $length_2; ?>"> 
+                    <select name="birs_service_length_type_2">
+                    <?php $this->render_select_options($this->length_types, $length_type_2); ?>
+                    </select>
                     </td>
                 </tr>
                 <tr class="form-field">
