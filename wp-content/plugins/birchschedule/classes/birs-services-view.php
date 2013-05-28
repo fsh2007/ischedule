@@ -120,8 +120,15 @@ class BIRS_Services_View extends BIRS_Content_View {
 
     function render_service_info($post) {
         $post_id = $post->ID;
-        $length = get_post_meta($post_id, '_birs_service_length', true);
-        $length_type = get_post_meta($post_id, '_birs_service_length_type', true);
+        //$length = get_post_meta($post_id, '_birs_service_length', true);
+        //$length_type = get_post_meta($post_id, '_birs_service_length_type', true);
+        $length_0 = get_post_meta($post_id, '_birs_service_length_0', true);
+        $length_type_0 = get_post_meta($post_id, '_birs_service_length_type_0', true);
+        $length_1 = get_post_meta($post_id, '_birs_service_length_1', true);
+        $length_type_1 = get_post_meta($post_id, '_birs_service_length_type_1', true);
+        $length_2 = get_post_meta($post_id, '_birs_service_length_2', true);
+        $length_type_2 = get_post_meta($post_id, '_birs_service_length_type_2', true);
+        
         $padding = get_post_meta($post_id, '_birs_service_padding', true);
         $padding_type = get_post_meta($post_id, '_birs_service_padding_type', true);
         $price = get_post_meta($post_id, '_birs_service_price', true);

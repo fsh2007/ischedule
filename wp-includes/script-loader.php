@@ -303,7 +303,7 @@ function wp_default_scripts( &$scripts ) {
 		'type' => 'characters' == _x( 'words', 'word count: words or characters?' ) ? 'c' : 'w',
 	) );
 
-	$scripts->add( 'media-upload', "/" . _WP_ADMIN . "/js/media-upload$suffix.js", array( 'thickbox', 'shortcode' ), false, 1 );
+	$scripts->add( 'media-upload', "/" . _WP_ADMIN_ . "/js/media-upload$suffix.js", array( 'thickbox', 'shortcode' ), false, 1 );
 
 	$scripts->add( 'hoverIntent', "/wp-includes/js/hoverIntent$suffix.js", array('jquery'), 'r6', 1 );
 
