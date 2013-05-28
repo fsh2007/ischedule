@@ -427,9 +427,9 @@ function wp_default_scripts( &$scripts ) {
 			'ays' => __('Are you sure you want to install this plugin?')
 		) );
 
-		$scripts->add( 'farbtastic', '/" . _WP_ADMIN_ . "/js/farbtastic.js', array('jquery'), '1.2' );
+		$scripts->add( 'farbtastic', '/' . _WP_ADMIN_ . '/js/farbtastic.js', array('jquery'), '1.2' );
 
-		$scripts->add( 'iris', '/" . _WP_ADMIN_ . "/js/iris.min.js', array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), false, 1 );
+		$scripts->add( 'iris', '/' . _WP_ADMIN_ . '/js/iris.min.js', array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), false, 1 );
 		$scripts->add( 'wp-color-picker', "/" . _WP_ADMIN_ . "/js/color-picker$suffix.js", array( 'iris' ), false, 1 );
 		did_action( 'init' ) && $scripts->localize( 'wp-color-picker', 'wpColorPickerL10n', array(
 			'clear' => __( 'Clear' ),
