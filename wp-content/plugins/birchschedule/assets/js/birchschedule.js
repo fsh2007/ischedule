@@ -3,6 +3,7 @@ jQuery(function($){
     var ajaxUrl = params.ajax_url;
     var allSchedule = params.all_schedule;
     var servicePriceMap = params.service_price_map;
+    var serviceMap = param.service_map;
     var serverGmtOffset = params.gmt_offset;
     var allDayoffs = params.all_dayoffs;
     
@@ -30,8 +31,32 @@ jQuery(function($){
         var locationId = $('#birs_appointment_location').val();
         var serviceStaffMap = params.service_staff_map[serviceId];
         var locationStaffMap = params.location_staff_map[locationId];
-        birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap, 
-            params.staff_order);
+        birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap, params.staff_order);
+    }
+    
+    function changeServiceOptions(){
+    	var clientTypeId = $('#birs_appointment_client_type').val();
+    	$('#birs_appointment_service_div').html('');
+    	var services = params.service_map[clientTypeId];
+    	var htmlStr = "";
+    	var idv = "birs_appointment_service_";
+    	var seperator = "-";
+    	$.each(services, function(key, values){
+    		idv = idv + clientTypeId + "_" + key;
+    		if(values['service_price_type'] == 'dont-show'){
+    			seperator = "";
+    		}
+    		
+    		htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
+    		htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
+    		htmlStr = htmlStr + "<br/>";
+    		
+    		$('#birs_appointment_service_div').append(htmlStr);
+    		$('#' + idv).on('click', function(){
+    			changeStaffOptions();
+    			return true;
+    		});
+    	});
     }
 
     function getTimeOptions(){

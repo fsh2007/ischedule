@@ -37,6 +37,7 @@ class BIRS_Shortcode {
             'all_dayoffs' => $this->get_all_dayoffs(),
             'service_price_map' => $calendar->get_service_price_map(),
             'service_duration_map' => $calendar->get_service_duration_map(),
+        	'service_map' => $calendar->get_service_length_map(),
             'service_staff_map' => $calendar->get_service_staff_map(),
             'location_staff_map' => apply_filters('birchschedule_location_staff_map', array()),
             'location_service_map' => apply_filters('birchschedule_location_service_map', array()),
@@ -479,7 +480,7 @@ class BIRS_Shortcode {
         </li>
         <li class="birs_form_field <?php echo $hide_staff_class; ?>"> 
             <label><?php _e('Service Provider', 'birchschedule'); ?></label>
-            <div class="birs_field_content">
+            <div id="birs_appointment_service_div" class="birs_field_content">
                 <select id="birs_appointment_staff" name="birs_appointment_staff">
                     <?php $calendar->render_staff_options($location_id, $service_id, 0); ?>
                 </select>
