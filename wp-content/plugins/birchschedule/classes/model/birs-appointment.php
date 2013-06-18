@@ -33,7 +33,6 @@ class BIRS_Appointment extends BIRS_Model {
                 ));
         $client->load();
         $this['post_title'] = $service['post_title'] . ' - ' . $client['post_title'];
-        echo $this['post_title'];
         $this['_birs_appointment_price'] = floatval($this['_birs_appointment_price']);
         parent::pre_save();
     }

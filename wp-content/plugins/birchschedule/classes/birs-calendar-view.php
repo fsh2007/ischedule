@@ -818,6 +818,8 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
 		        $appointment['_birs_appointment_service'] = $services[$i];
 		        $appointment['_birs_appointment_client'] = $client_id;
 		        $appointment_id = $appointment->save();
+		        
+		        echo $appointment_id. "<br/>";
 			}
 		}
         return $appointment_id;
