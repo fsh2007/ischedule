@@ -6,7 +6,7 @@ class BIRS_Service extends BIRS_Model {
         parent::__construct($id, $options);
         $this['post_type'] = 'birs_service';
     }
-
+	/*
     public function get_service_length() {
         $length = $this['_birs_service_length'];
         $length_type = $this['_birs_service_length_type'];
@@ -14,7 +14,15 @@ class BIRS_Service extends BIRS_Model {
             $length = $length * 60;
         }
         return $length;
-    }
+    }*/
+    public function get_service_length($clientType = 0) {
+    	$length = $this['_birs_service_length_' . $clientType];
+    	$length_type = $this['_birs_service_length_type_' . $clientType];
+    	if ($length_type == 'hours') {
+    		$length = $length * 60;
+    	}
+    	return $length;
+    }    
     
     public function get_padding($type) {
         $padding_type = $this['_birs_service_padding_type'];

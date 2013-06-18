@@ -86,18 +86,31 @@ jQuery(function($){
         }, 'html');
     }
     function changeAppointmentPrice() {
-        var serviceId = $('#birs_appointment_service').val();
-        if(serviceId) {
-            $('#birs_appointment_price').val(servicePriceMap[serviceId].price);
-        }
+    	var serviceId = 0;
+    	var price = 0;
+        $("input[name='birs_appointment_service[]']").each(function(){
+        	if( $(this).attr("checked") == true ){
+        		serviceId = $(this).val();
+        		price = price + servicePriceMap[serviceId].price;
+        	}
+        });
+       	$('#birs_appointment_price').val(price);  
     }
+
     function changeAppointmentDuration() {
+    	var clientTypeId = $('#birs_appointment_client_type').val();
         var serviceDurationMap = params.service_duration_map;
-        var serviceId = $('#birs_appointment_service').val();
-        if(serviceId) {
-            $('#birs_appointment_duration').val(serviceDurationMap[serviceId].duration);
-        }
+        var serviceId = 0;
+        var duration = 0;
+        $("input[name='birs_appointment_service[]']").each(function(){
+        	if( $(this).attr("checked") == true ){
+        		serviceId = $(this).val();
+        		duration = duration + serviceDurationMap[clientTypeId][serviceId].duration;
+        	}
+        });
+        $('#birs_appointment_duration').val(duration);
     }
+
     function isDayAvaliableByBookingPreferences(date, futureTime, cutOffTime) {
         var serverNow = getServerNow();
         var timeOfServer = serverNow.getTime();
@@ -204,13 +217,15 @@ jQuery(function($){
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_client_type').on('change', function(){
     	changeServiceOptions();
+        changeAppointmentPrice();
+        changeAppointmentDuration();
     	refreshDatetime();
     });
     $('#birs_appointment_location').on('change', function(){
         //changeServiceOptions();
         changeStaffOptions();
-        //changeAppointmentPrice();
-        //changeAppointmentDuration();
+        changeAppointmentPrice();
+        changeAppointmentDuration();
         refreshDatetime();
     });
     /*

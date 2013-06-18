@@ -61,8 +61,7 @@ class BIRS_Staff extends BIRS_Model {
         $all_schedule = $this->get_all_schedule();
         $new_all_schedule = array();
         foreach($all_schedule as $location_id => $schedule) {
-            $new_all_schedule[$location_id] = 
-                $this->get_calculated_schedule_by_location($location_id);
+            $new_all_schedule[$location_id] = $this->get_calculated_schedule_by_location($location_id);
         }
         return $new_all_schedule;
     }

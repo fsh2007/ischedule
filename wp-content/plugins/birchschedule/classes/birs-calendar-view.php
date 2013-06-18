@@ -134,17 +134,23 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
                         array('post_type' => 'birs_service'),
                         array(
                             'meta_keys' => array(
-                                '_birs_service_length',
-                                '_birs_service_length_type'
-                            )
+    							'_birs_service_length_type_0',
+    							'_birs_service_length_0',
+    							'_birs_service_length_type_1',
+    							'_birs_service_length_1',
+    							'_birs_service_length_type_2',
+    							'_birs_service_length_2'
+                           	)
                         )
         );
         $services = $query->query();
         $duration_map = array();
         foreach ($services as $service) {
-            $duration_map[$service['ID']] = array(
-                'duration' => $service->get_service_length()
-            );
+        	for($i = 0; $i < 3; $i++){
+	            $duration_map[$i][$service['ID']] = array(
+	                'duration' => $service->get_service_length($i)
+	            );
+        	}
         }
         return $duration_map;
     }
