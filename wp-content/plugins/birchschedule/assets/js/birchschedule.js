@@ -28,11 +28,16 @@ jQuery(function($){
     }*/
     
     function changeStaffOptions() {
-        var serviceId = $('#birs_appointment_service').val();
         var locationId = $('#birs_appointment_location').val();
-        var serviceStaffMap = params.service_staff_map[serviceId];
+        var clientTypeId = $('#birs_appointment_client_type').val();
+        var serviceId = 0;
+        var serviceStaffMap = null;
         var locationStaffMap = params.location_staff_map[locationId];
-        birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap, params.staff_order);
+        $("input[name='birs_appointment_service[]']").each(function(){
+            serviceId = $(this).val();
+        	serviceStaffMap = params.service_staff_map[serviceId];
+            birchschedule.changeStaffOptions(serviceStaffMap, locationStaffMap, params.staff_order);
+        });
     }
     
     function changeServiceOptions(){
@@ -197,8 +202,8 @@ jQuery(function($){
     $('#birs_appointment_location').on('change', function(){
         changeServiceOptions();
         changeStaffOptions();
-        changeAppointmentPrice();
-        changeAppointmentDuration();
+        //changeAppointmentPrice();
+        //changeAppointmentDuration();
         refreshDatetime();
     });
     /*
