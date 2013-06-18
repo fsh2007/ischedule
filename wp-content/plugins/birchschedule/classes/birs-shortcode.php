@@ -129,7 +129,7 @@ class BIRS_Shortcode {
 	                		)
 	                ));
 	                $service->load();
-	                $services = $service;
+	                $services[] = $service;
             	}
                 $location = new BIRS_Location($appointment['_birs_appointment_location'], array(
                             'base_keys' => array(
