@@ -154,19 +154,19 @@ class BIRS_Shortcode {
                                     <h4><?php _e('Location:', 'birchschedule'); ?></h4>
                                     <p><?php echo $location['post_title']; ?></p>
                                 </li>
-                                <li>
                           		<?php 
                           			for($i = 0; $i < sizeof($services); $i++)
                           			{
                           				$service = $services;
                           				$service_length = $service->get_service_length($appointment['_birs_appointment_client_type']);
                           		?>
-                                    <h4><?php _e('Service:', 'birchschedule'); ?></h4>
-                                    <p><?php echo " $service->post_title ($service_length mins) with $staff->post_title"; ?></p>
+                                <li>
+                          		<h4><?php _e('Service:', 'birchschedule'); ?></h4>
+                                <p><?php echo " $service->post_title ($service_length mins) with $staff->post_title"; ?></p>
+                                </li>
                           		<?php
                           			}
                           		?>
-                                </li>
                                 <li>
                                     <h4><?php _e('Time:', 'birchschedule'); ?></h4>
                                     <p><?php echo $time; ?></p>
