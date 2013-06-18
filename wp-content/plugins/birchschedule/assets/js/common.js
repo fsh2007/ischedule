@@ -44,14 +44,13 @@ jQuery(function($){
         }
     }
     
-    birchschedule.changeStaffOptions = function(serviceStaffMap, locationStaffMap,
-        staffOrder) {
+    birchschedule.changeStaffOptions = function(serviceStaffMap, locationStaffMap, staffOrder) {
         var staffId = $('#birs_appointment_staff').val();
 
         var availableStaff = _.pick( serviceStaffMap, _.keys(locationStaffMap));
         //$('#birs_appointment_staff').empty();
         $.each(staffOrder, function(index, key) {
-            if(_(availableStaff).has(key)) {
+            if(_(availableStaff).has(key) && $("#birs_appointment_staff option[value=" + key + "]").length == 0) {
                 var value = availableStaff[key];
                 $('#birs_appointment_staff').
                     append($("<option></option>").attr("value", key).text(value));
