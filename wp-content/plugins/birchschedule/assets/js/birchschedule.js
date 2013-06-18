@@ -42,7 +42,6 @@ jQuery(function($){
     
     function changeServiceOptions(){
     	var clientTypeId = $('#birs_appointment_client_type').val();
-    	alert(clientTypeId);
     	$('#birs_appointment_service_div').html('');
     	var services = params.service_map[clientTypeId];
     	var htmlStr = "";

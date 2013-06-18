@@ -49,7 +49,7 @@ jQuery(function($){
         var staffId = $('#birs_appointment_staff').val();
 
         var availableStaff = _.pick( serviceStaffMap, _.keys(locationStaffMap));
-        $('#birs_appointment_staff').empty();
+        //$('#birs_appointment_staff').empty();
         $.each(staffOrder, function(index, key) {
             if(_(availableStaff).has(key)) {
                 var value = availableStaff[key];
