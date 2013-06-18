@@ -170,7 +170,8 @@ class BIRS_Shortcode {
     }
     
     function save_appointment() {
-        return $this->get_calendar_view()->save_appointment();
+        //return $this->get_calendar_view()->save_appointment();
+        return $this->get_calendar_view()->save_multi_appointment();
     }
 
     function set_request_appointment_status() {

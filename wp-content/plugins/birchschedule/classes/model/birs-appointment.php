@@ -11,10 +11,11 @@ class BIRS_Appointment extends BIRS_Model {
     }
 
     public function pre_save() {
+    	$clientType = isset($this['_birs_appointment_client_type']) ? $this['_birs_appointment_client_type'] : 0;
         $service = new BIRS_Service($this['_birs_appointment_service'], array(
                     'meta_keys' => array(
-                        '_birs_service_length', '_birs_service_length_type',
-                        '_birs_service_padding', '_birs_service_padding_type'
+                        '_birs_service_length_' . $clientType, '_birs_service_length_type_' . $clientType,
+                    	'_birs_service_padding', '_birs_service_padding_type'
                     ),
                     'base_keys' => array(
                         'post_title'
@@ -23,7 +24,8 @@ class BIRS_Appointment extends BIRS_Model {
         $service->load();
         $this['_birs_appointment_padding_before'] = $service->get_padding_before();
         $this['_birs_appointment_padding_after'] = $service->get_padding_after();
-        $this['_birs_appointment_duration'] = (int) $this['_birs_appointment_duration'];
+        //$this['_birs_appointment_duration'] = (int) $this['_birs_appointment_duration'];
+        $this['_birs_appointment_duration'] = (int) $service->get_service_length($clientType);
         $client = new BIRS_Client($this['_birs_appointment_client'], array(
                     'base_keys' => array(
                         'post_title'

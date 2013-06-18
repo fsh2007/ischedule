@@ -759,7 +759,8 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
             '_birs_appointment_location', '_birs_appointment_price',
             '_birs_appointment_timestamp', '_birs_appointment_duration',
             '_birs_appointment_padding_before', '_birs_appointment_padding_after',
-            '_birs_appointment_client', '_birs_appointment_payment_status'
+            '_birs_appointment_client', '_birs_appointment_payment_status',
+			'_birs_appointment_client_type'
                 ));
         $appointment = new BIRS_Appointment($appointment_id, array(
                     'meta_keys' => $fields,
@@ -771,12 +772,54 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
         $client_id = $this->save_client();
         $appointment['_birs_appointment_client'] = $client_id;
         $appointment_id = $appointment->save();
+        
         $payments = array();
         if(isset($_POST['birs_appointment_payments'])) {
             $payments = $_POST['birs_appointment_payments'];
         }
         do_action('birchschedule_save_appointment_payments', 
             $appointment_id, $client_id, $payments);
+        return $appointment_id;
+    }
+    
+    function save_multi_appointment() {
+		if (isset($_POST['birs_appointment_id'])) {
+			$appointment_id = $_POST['birs_appointment_id'];
+		} else {
+			$appointment_id = 0;
+		}
+		if (isset($_POST['birs_appointment_fields'])) {
+			$fields = $_POST['birs_appointment_fields'];
+		} else {
+			$fields = array();
+		}
+		$fields = array_merge($fields, array(
+				'_birs_appointment_service', '_birs_appointment_staff',
+				'_birs_appointment_location', '_birs_appointment_price',
+				'_birs_appointment_timestamp', '_birs_appointment_duration',
+				'_birs_appointment_padding_before', '_birs_appointment_padding_after',
+				'_birs_appointment_client', '_birs_appointment_payment_status',
+				'_birs_appointment_client_type'
+		));
+		
+		$client_id = $this->save_client();
+
+		if( isset($_POST['_birs_appointment_service']) && is_array($_POST['_birs_appointment_service']) ){
+			$services = $_POST['_birs_appointment_service'];
+			for($i = 0; $i < sizeof($services); $i++)
+			{
+		        $appointment = new BIRS_Appointment($appointment_id, array(
+		                    'meta_keys' => $fields,
+		                    'base_keys' => array(
+		                        'post_title'
+		                    )
+		                ));
+		        $appointment->copyFromRequest($_POST);
+		        $appointment['_birs_appointment_service'] = $services[$i];
+		        $appointment['_birs_appointment_client'] = $client_id;
+		        $appointment_id = $appointment->save();
+			}
+		}
         return $appointment_id;
     }
 
