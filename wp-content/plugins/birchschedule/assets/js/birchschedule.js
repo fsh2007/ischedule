@@ -63,6 +63,8 @@ jQuery(function($){
 	    		$('#birs_appointment_service_div').append(htmlStr);
 	    		$('#' + idv).on('click', function(){
 	    			changeStaffOptions();
+	    	        changeAppointmentPrice();
+	    	        changeAppointmentDuration();
 	    			return true;
 	    		});
             }
