@@ -89,7 +89,7 @@ jQuery(function($){
     	var serviceId = 0;
     	var price = 0;
         $("input[name='birs_appointment_service[]']").each(function(){
-        	if( $(this).attr("checked") == true ){
+        	if( $(this).attr("checked") ){
         		serviceId = $(this).val();
         		price = price + servicePriceMap[serviceId].price;
         	}
@@ -103,8 +103,7 @@ jQuery(function($){
         var serviceId = 0;
         var duration = 0;
         $("input[name='birs_appointment_service[]']").each(function(){
-        	alert($(this).attr("checked"));
-        	if( $(this).attr("checked") == true ){
+        	if( $(this).attr("checked") ){
         		serviceId = $(this).val();
         		duration = duration + serviceDurationMap[clientTypeId][serviceId].duration;
         		alert(duration);
