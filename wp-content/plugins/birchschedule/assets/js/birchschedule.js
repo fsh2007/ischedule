@@ -189,9 +189,9 @@ jQuery(function($){
         });
     }
     changeServiceOptions();
-    changeStaffOptions();    
-    changeAppointmentPrice();
-    changeAppointmentDuration();
+    //changeStaffOptions();    
+    //changeAppointmentPrice();
+    //changeAppointmentDuration();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_location').on('change', function(){
