@@ -91,7 +91,7 @@ jQuery(function($){
         $("input[name='birs_appointment_service[]']").each(function(){
         	if( $(this).attr("checked") ){
         		serviceId = $(this).val();
-        		price = price + servicePriceMap[serviceId].price;
+        		price = price + parseFloat(servicePriceMap[serviceId].price);
         	}
         });
        	$('#birs_appointment_price').val(price);  
@@ -105,7 +105,7 @@ jQuery(function($){
         $("input[name='birs_appointment_service[]']").each(function(){
         	if( $(this).attr("checked") ){
         		serviceId = $(this).val();
-        		duration = duration + serviceDurationMap[clientTypeId][serviceId].duration;
+        		duration = duration + parseInt(serviceDurationMap[clientTypeId][serviceId].duration);
         		alert(duration);
         	}
         });
