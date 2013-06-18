@@ -201,12 +201,13 @@ jQuery(function($){
         changeAppointmentDuration();
         refreshDatetime();
     });
+    /*
     $('#birs_appointment_service').on('change', function(){
         changeStaffOptions();
         changeAppointmentPrice();
         changeAppointmentDuration();
         refreshDatetime();
-    });
+    });*/
     $('#birs_appointment_staff').on('change', function(){
         refreshDatetime();
     });
