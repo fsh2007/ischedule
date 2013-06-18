@@ -24,8 +24,8 @@ class BIRS_Appointment extends BIRS_Model {
         $service->load();
         $this['_birs_appointment_padding_before'] = $service->get_padding_before();
         $this['_birs_appointment_padding_after'] = $service->get_padding_after();
-        //$this['_birs_appointment_duration'] = (int) $this['_birs_appointment_duration'];
-        $this['_birs_appointment_duration'] = (int) $service->get_service_length($clientType);
+        $this['_birs_appointment_duration'] = (int) $this['_birs_appointment_duration'];
+        //$this['_birs_appointment_duration'] = (int) $service->get_service_length($clientType);
         $client = new BIRS_Client($this['_birs_appointment_client'], array(
                     'base_keys' => array(
                         'post_title'

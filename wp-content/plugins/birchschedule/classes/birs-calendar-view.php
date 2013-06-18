@@ -783,11 +783,6 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
     }
     
     function save_multi_appointment() {
-		if (isset($_POST['birs_appointment_id'])) {
-			$appointment_id = $_POST['birs_appointment_id'];
-		} else {
-			$appointment_id = 0;
-		}
 		if (isset($_POST['birs_appointment_fields'])) {
 			$fields = $_POST['birs_appointment_fields'];
 		} else {
@@ -803,7 +798,7 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
 		));
 		
 		$client_id = $this->save_client();
-
+		$appointment_id = array();
 		if( isset($_POST['birs_appointment_service']) && is_array($_POST['birs_appointment_service']) ){
 			$services = $_POST['birs_appointment_service'];
 			for($i = 0; $i < sizeof($services); $i++)
@@ -817,9 +812,9 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
 		        $appointment->copyFromRequest($_POST);
 		        $appointment['_birs_appointment_service'] = $services[$i];
 		        $appointment['_birs_appointment_client'] = $client_id;
-		        $appointment_id = $appointment->save();
+		        $appointment_id[] = $appointment->save();
 		        
-		        echo $appointment_id. "<br/>";
+		        //echo $appointment_id. "<br/>";
 			}
 		}
         return $appointment_id;

@@ -102,32 +102,41 @@ class BIRS_Shortcode {
         <div id="birs_response">
             <?php
             if (!$errors):
-                $appointment = new BIRS_Appointment($appointment_id, array(
-                            'meta_keys' => array(
-                                '_birs_appointment_location',
-                                '_birs_appointment_service',
-                                '_birs_appointment_staff',
-                                '_birs_appointment_timestamp'
-                            )
-                        ));
-                $appointment->load();
+            	$appointments = array();
+            	$services = array();
+            	for($i = 0; $i < sizeof($appointment_id); $i++)
+            	{
+	                $appointment = new BIRS_Appointment($appointment_id[$i], array(
+	                            'meta_keys' => array(
+	                                '_birs_appointment_location',
+	                                '_birs_appointment_service',
+	                                '_birs_appointment_staff',
+	                                '_birs_appointment_timestamp',
+									'_birs_appointment_client_type'
+	                            )
+	                        ));
+	                $appointment->load();
+	                $appointments[] = $appointment;
+
+	                $service = new BIRS_Service($appointment['_birs_appointment_service'], array(
+	                		'base_keys' => array(
+	                				'post_title'
+	                		),
+	                		'meta_keys' => array(
+	                				'_birs_service_length_' . $appointment['_birs_appointment_client_type'], 
+									'_birs_service_length_type_' . $appointment['_birs_appointment_client_type'],
+	                				'_birs_service_padding', '_birs_service_padding_type'
+	                		)
+	                ));
+	                $service->load();
+	                $services = $service;
+            	}
                 $location = new BIRS_Location($appointment['_birs_appointment_location'], array(
                             'base_keys' => array(
                                 'post_title'
                             )
                         ));
                 $location->load();
-                $service = new BIRS_Service($appointment['_birs_appointment_service'], array(
-                            'base_keys' => array(
-                                'post_title'
-                            ),
-                            'meta_keys' => array(
-                                '_birs_service_length', '_birs_service_length_type',
-                                '_birs_service_padding', '_birs_service_padding_type'
-                            )
-                        ));
-                $service->load();
-                $service_length = $service->get_service_length();
                 $staff = new BIRS_Staff($appointment['_birs_appointment_staff'], array(
                             'base_keys' => array(
                                 'post_title'
@@ -146,8 +155,17 @@ class BIRS_Shortcode {
                                     <p><?php echo $location['post_title']; ?></p>
                                 </li>
                                 <li>
+                          		<?php 
+                          			for($i = 0; $i < sizeof($services); $i++)
+                          			{
+                          				$service = $services;
+                          				$service_length = $service->get_service_length($appointment['_birs_appointment_client_type']);
+                          		?>
                                     <h4><?php _e('Service:', 'birchschedule'); ?></h4>
                                     <p><?php echo " $service->post_title ($service_length mins) with $staff->post_title"; ?></p>
+                          		<?php
+                          			}
+                          		?>
                                 </li>
                                 <li>
                                     <h4><?php _e('Time:', 'birchschedule'); ?></h4>
