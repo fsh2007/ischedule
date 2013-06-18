@@ -11,6 +11,7 @@ jQuery(function($){
         return birchschedule.getServerNow(serverGmtOffset);
     }
     
+    /*
     function changeServiceOptions() {
         var serviceId = $('#birs_appointment_service').val();
         var locationId = $('#birs_appointment_location').val();
@@ -24,7 +25,7 @@ jQuery(function($){
             }
         });
         $('#birs_appointment_service').val(serviceId).trigger('change');
-    }
+    }*/
     
     function changeStaffOptions() {
         var serviceId = $('#birs_appointment_service').val();
