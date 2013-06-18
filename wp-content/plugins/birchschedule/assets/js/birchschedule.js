@@ -62,6 +62,7 @@ jQuery(function($){
 	    		
 	    		$('#birs_appointment_service_div').append(htmlStr);
 	    		$('#' + idv).on('click', function(){
+	    			$(this).attr("checked", true);
 	    			changeStaffOptions();
 	    	        changeAppointmentPrice();
 	    	        changeAppointmentDuration();
