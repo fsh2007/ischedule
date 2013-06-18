@@ -103,6 +103,7 @@ jQuery(function($){
         var serviceId = 0;
         var duration = 0;
         $("input[name='birs_appointment_service[]']").each(function(){
+        	alert($(this).attr("checked"));
         	if( $(this).attr("checked") == true ){
         		serviceId = $(this).val();
         		duration = duration + serviceDurationMap[clientTypeId][serviceId].duration;
@@ -211,9 +212,8 @@ jQuery(function($){
         });
     }
     changeServiceOptions();
-    //changeStaffOptions();    
-    //changeAppointmentPrice();
-    //changeAppointmentDuration();
+    changeAppointmentPrice();
+    changeAppointmentDuration();
     showDatepicker();
     $('#birs_appointment_datepicker').datepicker("setDate", getServerNow());
     $('#birs_appointment_client_type').on('change', function(){
@@ -229,13 +229,6 @@ jQuery(function($){
         changeAppointmentDuration();
         refreshDatetime();
     });
-    /*
-    $('#birs_appointment_service').on('change', function(){
-        changeStaffOptions();
-        changeAppointmentPrice();
-        changeAppointmentDuration();
-        refreshDatetime();
-    });*/
     $('#birs_appointment_staff').on('change', function(){
         changeAppointmentPrice();
         changeAppointmentDuration();
