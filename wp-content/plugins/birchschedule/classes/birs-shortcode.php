@@ -157,7 +157,7 @@ class BIRS_Shortcode {
                           		<?php 
                           			for($i = 0; $i < sizeof($services); $i++)
                           			{
-                          				$service = $services;
+                          				$service = $services[$i];
                           				$service_length = $service->get_service_length($appointment['_birs_appointment_client_type']);
                           		?>
                                 <li>
