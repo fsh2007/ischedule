@@ -62,10 +62,7 @@ jQuery(function($){
 	    		
 	    		$('#birs_appointment_service_div').append(htmlStr);
 	    		$('#' + idv).on('change', function(){
-	    			$(this).attr("checked", true);
 	    			changeStaffOptions();
-	    	        changeAppointmentPrice();
-	    	        changeAppointmentDuration();
 	    			return true;
 	    		});
             }
@@ -240,7 +237,9 @@ jQuery(function($){
         refreshDatetime();
     });*/
     $('#birs_appointment_staff').on('change', function(){
-        refreshDatetime();
+        changeAppointmentPrice();
+        changeAppointmentDuration();
+    	refreshDatetime();
     });
     $('#birs_book_appointment').click(function(){
         var postData = $('#birs_appointment_form').serialize();
