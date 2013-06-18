@@ -109,6 +109,7 @@ jQuery(function($){
         	if( $(this).attr("checked") == true ){
         		serviceId = $(this).val();
         		duration = duration + serviceDurationMap[clientTypeId][serviceId].duration;
+        		alert(duration);
         	}
         });
         $('#birs_appointment_duration').val(duration);
