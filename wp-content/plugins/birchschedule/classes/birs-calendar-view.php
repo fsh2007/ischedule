@@ -808,6 +808,7 @@ class BIRS_Calendar_View extends BIRS_Admin_View {
 			$services = $_POST['_birs_appointment_service'];
 			for($i = 0; $i < sizeof($services); $i++)
 			{
+				echo "service : " . $services[$i] . "<br/>";
 		        $appointment = new BIRS_Appointment($appointment_id, array(
 		                    'meta_keys' => $fields,
 		                    'base_keys' => array(
