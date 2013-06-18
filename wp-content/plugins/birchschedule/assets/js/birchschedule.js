@@ -42,26 +42,30 @@ jQuery(function($){
     
     function changeServiceOptions(){
     	var clientTypeId = $('#birs_appointment_client_type').val();
-    	$('#birs_appointment_service_div').html('');
+        var locationId = $('#birs_appointment_location').val();
+        var avaliableServices = params.location_service_map[locationId];
     	var services = params.service_map[clientTypeId];
     	var htmlStr = "";
     	var idv = "birs_appointment_service_";
     	var seperator = "-";
+    	$('#birs_appointment_service_div').html('');
     	$.each(services, function(key, values){
-    		idv = idv + clientTypeId + "_" + key;
-    		if(values['service_price_type'] == 'dont-show'){
-    			seperator = "";
-    		}
-    		
-    		htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
-    		htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
-    		htmlStr = htmlStr + "<br/>";
-    		
-    		$('#birs_appointment_service_div').append(htmlStr);
-    		$('#' + idv).on('click', function(){
-    			changeStaffOptions();
-    			return true;
-    		});
+            if(_(avaliableServices).has(key)) {
+	    		idv = idv + clientTypeId + "_" + key;
+	    		if(values['service_price_type'] == 'dont-show'){
+	    			seperator = "";
+	    		}
+	    		
+	    		htmlStr = "<input type='checkbox' name='birs_appointment_service[]' id='" + idv + "' value='" + key + "' />";
+	    		htmlStr = htmlStr + values['service_title'] + "(" + values['service_length'] + " mins) " + seperator + values['service_price'];
+	    		htmlStr = htmlStr + "<br/>";
+	    		
+	    		$('#birs_appointment_service_div').append(htmlStr);
+	    		$('#' + idv).on('click', function(){
+	    			changeStaffOptions();
+	    			return true;
+	    		});
+            }
     	});
     }
 
@@ -203,7 +207,7 @@ jQuery(function($){
     	refreshDatetime();
     });
     $('#birs_appointment_location').on('change', function(){
-        changeServiceOptions();
+        //changeServiceOptions();
         changeStaffOptions();
         //changeAppointmentPrice();
         //changeAppointmentDuration();
